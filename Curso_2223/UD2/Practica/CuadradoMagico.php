@@ -19,7 +19,6 @@
 
         class Cuadrado{
 
-            private $esCuadradoMagico;
             private $arrayResultados;
             /*private $matriz = array(
                 array(4, 9, 2),
