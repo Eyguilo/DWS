@@ -9,7 +9,7 @@
             <h1>Desarrollo de aplicaciones web en entorno servidor</h1>
             <a href="index.html">INICIO</a>
             <a href="pagina1.html">Primera página</a>
-            <a href="pagina2.html">Segunda página</a>
+
         </div>
         <div class="segunda_caja">
 
