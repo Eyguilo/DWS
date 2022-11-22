@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.contenedor {
+    width: 100%;
+    height: 100%;
+    background-image: url(imagenes/colores.gif);
+}
+.caja_uno {
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+h1{
+    padding-top: 2%;
+    font-size: 70px;
+}
+.caja_dos {
+    margin-top: 10%;
+    width: 100%;
+}
+
+.columna_uno {
+    float: left;
+    width: 50%;
+}
+.columna_dos {
+    float:left;
+    width: 50%;
+}
+.caja_imagen{
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    height: 20%;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+a:link{
+    text-align: center;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 200%;    
+}
+p:hover{
+    background-color: purple;
+    color: white;
+    border-radius: 50px;
+}
+p{
+    color: rgb(255, 123, 255);
+}
