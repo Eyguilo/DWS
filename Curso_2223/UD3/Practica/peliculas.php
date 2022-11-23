@@ -8,7 +8,6 @@ $estilo;
 $categoria = $_GET['categoria'];
 
 if($categoria == "terror"){
-
     $estilo = 'estilos_terror';
 }elseif($categoria == "anime"){
     $estilo = 'estilos_anime';
@@ -26,6 +25,9 @@ echo"
 
 <?php
 
+    ini_set('display_errors', 'On');
+    ini_set('html_errors', 0);
+
     echo "<div class='contenedor'>";
 
     echo "<div class='primera_caja'>
@@ -40,28 +42,28 @@ echo"
         private $duracion;
         private $votos;
 
-        function __constructor($titulo, $imagen, $dureacion, $votos){
+        public function __constructor($titulo, $imagen, $duracion, $votos){
             $this->titulo = $titulo;
             $this->imagen = $imagen;
             $this->duracion = $duracion;
             $this->votos = $votos;
         }
 
-        function mostrarPelicula(){
+        function mostrarPelicula($pelicula){
 
             for ($i=0; $i < 1; $i++) {             
 
                 echo "
                 <div class='segunda_caja'>
                     <div class='primera_columna'>
-                        <div class='titulo_caja'><h3>".$titulo."</h3></div>
+                        <div class='titulo_caja'><h3>".$pelicula->getTitulo()."</h3></div>
                         <div class='imagen_caja'>
-                            <img src='".$imagen."' alt='imagen_the_shining'>
+                            <img src='".$pelicula->getImagen()."' alt='imagen_the_shining'>
                         </div>
-                        <div class='duracion_caja'>Duración: ".$duracion." min.</div>
+                        <div class='duracion_caja'>Duración: ".$pelicula->getDuracion()." min.</div>
                     </div>
                     <div class='segunda_columna'>
-                        <div class='votos_caja'>Votos: ".$votos."</div>
+                        <div class='votos_caja'>Votos: ".$pelicula->getVotos()."</div>
                         <div class='sinopsis_caja'>Sinopsis: </div>
                         <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='fichas.php'>Ver ficha</a></div>
                     </div>
@@ -69,10 +71,40 @@ echo"
                 </div>";
             }
         }
+
+        public function getTitulo(){
+            return $this->titulo;
+        }
+
+        public function setTitulo($titulo){
+            $this->titulo= $titulo;
+        }
+        public function getImagen(){
+            return $this->imagen;
+        }
+
+        public function setImagen($imagen){
+            $this->iamgen= $imagen;
+        }
+        public function getDuracion(){
+            return $this->duracion;
+        }
+
+        public function setDuracion($duracion){
+            $this->duracion= $duracion;
+        }
+        public function getVotos(){
+            return $this->votos;
+        }
+
+        public function setVotos($votos){
+            $this->votos= $votos;
+        }
     }
 
+
     $pelicula1 = new Pelicula ("El Resplandor", "imagenes/the_shining.jpg", 103, 5);
-    $pelicula1->mostrarPelicula();                               
+    $pelicula1->mostrarPelicula($pelicula1);                           
     
     echo "</div>";
 ?>      
