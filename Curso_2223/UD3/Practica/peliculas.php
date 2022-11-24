@@ -68,12 +68,7 @@ echo "
         return $resumen;        
     }
 
-    $pelicula1 = new PeliculaTerror(7,"El resplandor","imgs/terror/the_shining.jpg",1980,146,"Stanley Kubrick","Stanley Kubrick, Diane Johnson. Novela: Stephen King","Rachel Elkind, Wendy Carlos","John Alcott",
-    "Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers, Barry Nelson, Philip Stone, Joe Turkel, Lia Beldam, Billie Gibson, Barry Dennen, David Baxt, Manning Redwood, Lisa Burns, Alison Coleridge, Norman Gay, 
-    Tony Burton, Anne Jackson, Jana Shelden, Burnell Tucker","Coproducción Reino Unido-Estados Unidos; Hawk Films, Peregrine, Warner Bros., Producers Circle. Distribuidora: Warner Bros.","Terror | Sobrenatural. Casas 
-    encantadas. Fantasmas. Drama psicológico. Película de culto","Jack Torrance se traslada con su mujer y su hijo de siete años al impresionante hotel Overlook, en Colorado, para encargarse del mantenimiento de 
-    las instalaciones durante la temporada invernal, época en la que permanece cerrado y aislado por la nieve. Su objetivo es encontrar paz y sosiego para escribir una novela. Sin embargo, poco después de su 
-    llegada al hotel, al mismo tiempo que Jack empieza a padecer inquietantes trastornos de personalidad, se suceden extraños y espeluznantes fenómenos paranormales.", 10);
+    $pelicula1 = new PeliculaTerror(0,0,0,0,0,0,0);
 
     mostrarPelicula($peliculas);
     longitudSinopsis($pelicula1);
