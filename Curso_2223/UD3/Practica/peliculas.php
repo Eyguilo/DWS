@@ -13,7 +13,7 @@ if($categoria == "terror"){
     $estilo = 'estilos_anime';
 }
 
-echo"
+echo "
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -28,6 +28,8 @@ echo"
     ini_set('display_errors', 'On');
     ini_set('html_errors', 0);
 
+    require("objetos.php");
+
     echo "<div class='contenedor'>";
 
     echo "<div class='primera_caja'>
@@ -35,78 +37,48 @@ echo"
             <a class='enlace_inicio' href='categorias.php'>Inicio</a>
         </div>";
 
-    class Pelicula{
 
-        private $titulo;
-        private $imagen;
-        private $duracion;
-        private $votos;
+    function mostrarPelicula($peliculas){
 
-        public function __constructor($titulo, $imagen, $duracion, $votos){
-            $this->titulo = $titulo;
-            $this->imagen = $imagen;
-            $this->duracion = $duracion;
-            $this->votos = $votos;
-        }
+        for ($i=0; $i < count($peliculas); $i++) {             
 
-        function mostrarPelicula($pelicula){
-
-            for ($i=0; $i < 1; $i++) {             
-
-                echo "
-                <div class='segunda_caja'>
-                    <div class='primera_columna'>
-                        <div class='titulo_caja'><h3>".$pelicula->getTitulo()."</h3></div>
-                        <div class='imagen_caja'>
-                            <img src='".$pelicula->getImagen()."' alt='imagen_the_shining'>
-                        </div>
-                        <div class='duracion_caja'>Duración: ".$pelicula->getDuracion()." min.</div>
+            echo "
+            <div class='segunda_caja'>
+                <div class='primera_columna'>
+                    <div class='titulo_caja'><h3>".$peliculas[$i]->getTitulo()."</h3></div>
+                    <div class='imagen_caja'>
+                        <img src='".$peliculas[$i]->getImagen()."' alt='imagen_the_shining'>
                     </div>
-                    <div class='segunda_columna'>
-                        <div class='votos_caja'>Votos: ".$pelicula->getVotos()."</div>
-                        <div class='sinopsis_caja'>Sinopsis: </div>
-                        <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='fichas.php'>Ver ficha</a></div>
-                    </div>
-                    <div class='tercera_columna'></div>
-                </div>";
-            }
-        }
-
-        public function getTitulo(){
-            return $this->titulo;
-        }
-
-        public function setTitulo($titulo){
-            $this->titulo= $titulo;
-        }
-        public function getImagen(){
-            return $this->imagen;
-        }
-
-        public function setImagen($imagen){
-            $this->iamgen= $imagen;
-        }
-        public function getDuracion(){
-            return $this->duracion;
-        }
-
-        public function setDuracion($duracion){
-            $this->duracion= $duracion;
-        }
-        public function getVotos(){
-            return $this->votos;
-        }
-
-        public function setVotos($votos){
-            $this->votos= $votos;
+                    <div class='duracion_caja'>Duración: ".$peliculas[$i]->getDuracion()." min.</div>
+                </div>
+                <div class='segunda_columna'>
+                    <div class='votos_caja'>Votos: ".$peliculas[$i]->getVotos()."</div>
+                    <div class='sinopsis_caja'>".longitudSinopsis($peliculas[$i])."<a class='enlace_ficha' href='fichas.php'>...</a></div>
+                    <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='fichas.php'>Ver ficha</a></div>
+                </div>
+                <div class='tercera_columna'></div>
+            </div>";
         }
     }
-
-
-    $pelicula1 = new Pelicula ("El Resplandor", "imagenes/the_shining.jpg", 103, 5);
-    $pelicula1->mostrarPelicula($pelicula1);                           
     
+    function longitudSinopsis($pelicula){
+
+        $resumen = substr($pelicula->getSinopsis(), 0, 200);
+
+        return $resumen;        
+    }
+
+    $pelicula1 = new PeliculaTerror(7,"El resplandor","imgs/terror/the_shining.jpg",1980,146,"Stanley Kubrick","Stanley Kubrick, Diane Johnson. Novela: Stephen King","Rachel Elkind, Wendy Carlos","John Alcott",
+    "Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers, Barry Nelson, Philip Stone, Joe Turkel, Lia Beldam, Billie Gibson, Barry Dennen, David Baxt, Manning Redwood, Lisa Burns, Alison Coleridge, Norman Gay, 
+    Tony Burton, Anne Jackson, Jana Shelden, Burnell Tucker","Coproducción Reino Unido-Estados Unidos; Hawk Films, Peregrine, Warner Bros., Producers Circle. Distribuidora: Warner Bros.","Terror | Sobrenatural. Casas 
+    encantadas. Fantasmas. Drama psicológico. Película de culto","Jack Torrance se traslada con su mujer y su hijo de siete años al impresionante hotel Overlook, en Colorado, para encargarse del mantenimiento de 
+    las instalaciones durante la temporada invernal, época en la que permanece cerrado y aislado por la nieve. Su objetivo es encontrar paz y sosiego para escribir una novela. Sin embargo, poco después de su 
+    llegada al hotel, al mismo tiempo que Jack empieza a padecer inquietantes trastornos de personalidad, se suceden extraños y espeluznantes fenómenos paranormales.", 10);
+
+    mostrarPelicula($peliculas);
+    longitudSinopsis($pelicula1);
     echo "</div>";
+
 ?>      
 </body>
 </html>
