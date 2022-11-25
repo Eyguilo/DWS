@@ -5,15 +5,10 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='stylesheet' href='categorias.css'>    
     <title>Categorías</title>
-    
 </head>
 <body>
 
-<?php 
-
-    $nombre = $_POST['NOMBRE'];
-    echo $nombre;
-
+<?php
     echo"
     <div class='contenedor'>
         <div class='caja_uno'><h1>Categorías</h1></div>

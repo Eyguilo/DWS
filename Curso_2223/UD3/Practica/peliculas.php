@@ -2,28 +2,28 @@
 <html lang='es'>
 <head>
 
-<?php 
+    <?php 
 
-$estilo;
-$categoria = $_GET['categoria'];
+    $estilo;
+    $categoria = $_GET['categoria'];
 
-if($categoria == "terror"){
-    $estilo = 'estilos_terror';
-}elseif($categoria == "anime"){
-    $estilo = 'estilos_anime';
-}
+    if($categoria == "terror"){
+        $estilo = 'estilos_terror';
+    }elseif($categoria == "anime"){
+        $estilo = 'estilos_anime';
+    }
 
-echo "
-    <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <link rel='stylesheet' href='".$estilo.".css'>
-    <title>Películas: ".$categoria."</title>
-</head>
-<body>";
-?>
+    echo "
+        <meta charset='UTF-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <link rel='stylesheet' href='".$estilo.".css'>
+        <title>Películas: ".$categoria."</title>
+    </head>
+    <body>";
+    ?>
 
-<?php
+    <?php
 
     ini_set('display_errors', 'On');
     ini_set('html_errors', 0);
@@ -53,8 +53,8 @@ echo "
                 </div>
                 <div class='segunda_columna'>
                     <div class='votos_caja'>Votos: ".$peliculas[$i]->getVotos()."</div>
-                    <div class='sinopsis_caja'>".longitudSinopsis($peliculas[$i])."<a class='enlace_ficha' href='fichas.php'>...</a></div>
-                    <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='fichas.php'>Ver ficha</a></div>
+                    <div class='sinopsis_caja'>".longitudSinopsis($peliculas[$i])."<a class='enlace_ficha' href='ficha.php'>...</a></div>
+                    <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='ficha.php'>Ver ficha</a></div>
                 </div>
                 <div class='tercera_columna'></div>
             </div>";
@@ -72,6 +72,6 @@ echo "
     longitudSinopsis($pelicula1);
     echo "</div>";
 
-?>      
+    ?>      
 </body>
 </html>
