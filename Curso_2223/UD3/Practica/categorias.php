@@ -9,7 +9,12 @@
 </head>
 <body>
 
-<?php echo"
+<?php 
+
+    $nombre = $_POST['NOMBRE'];
+    echo $nombre;
+
+    echo"
     <div class='contenedor'>
         <div class='caja_uno'><h1>Categorías</h1></div>
         <div class='caja_dos'>

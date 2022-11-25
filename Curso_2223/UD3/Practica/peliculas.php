@@ -62,9 +62,7 @@ echo "
     }
     
     function longitudSinopsis($pelicula){
-
         $resumen = substr($pelicula->getSinopsis(), 0, 200);
-
         return $resumen;        
     }
 
