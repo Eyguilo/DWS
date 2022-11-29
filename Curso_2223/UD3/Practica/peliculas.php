@@ -17,7 +17,7 @@
         <meta charset='UTF-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-        <link rel='stylesheet' href='".$estilo.".css'>
+        <link rel='stylesheet' href='css/".$estilo.".css'>
         <title>Películas: ".$categoria."</title>
     </head>
     <body>";
@@ -54,7 +54,7 @@
                 <div class='segunda_columna'>
                     <div class='votos_caja'>Votos: ".$peliculas[$i]->getVotos()."</div>
                     <div class='sinopsis_caja'>".longitudSinopsis($peliculas[$i])."<a class='enlace_ficha' href='ficha.php'>...</a></div>
-                    <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='ficha.php'>Ver ficha</a></div>
+                    <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='ficha.php?id=".$peliculas[$i]->getId()."'>Ver ficha</a></div>
                 </div>
                 <div class='tercera_columna'></div>
             </div>";
