@@ -66,7 +66,7 @@
         return $resumen;        
     }
 
-    $pelicula1 = new PeliculaTerror(0,0,0,0,0,0,0);
+    $pelicula1 = new PeliculaTerror();
 
     mostrarPelicula($peliculas);
     longitudSinopsis($pelicula1);

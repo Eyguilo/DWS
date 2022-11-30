@@ -25,12 +25,9 @@
                 <h1 class='titulo_categoria'>Categoría: </h1>
                 <a class='enlace_inicio' href='categorias.php'>Inicio</a>
             </div>";
-
-
-        
         
         function mostrarPelicula($peliculas){
-            $id = $_GET['id'];
+            
 
             for ($i=0; $i < count($peliculas); $i++) {
 
