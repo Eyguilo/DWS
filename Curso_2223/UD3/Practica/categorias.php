@@ -15,7 +15,7 @@
         <div class='caja_dos'>
             <div class='columna_uno'>
                 <div class='caja_imagen'>
-                    <a href='prueba.php?categoria=terror'>
+                    <a href='peliculas.php?categoria=terror'>
                         <img src='imagenes/simbolo_terror.png' alt='simbolo_terror'>
                     <p>Terror</p></a>
                 </div>
@@ -23,7 +23,7 @@
             
             <div class='columna_dos'>
                 <div class='caja_imagen'>
-                    <a href='prueba.php?categoria=anime'>
+                    <a href='peliculas.php?categoria=anime'>
                         <img src='imagenes/one_piece.png' alt='simbolo_anime'>
                         <p>Anime</p>
                     </a>
