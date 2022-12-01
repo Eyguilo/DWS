@@ -3,7 +3,7 @@
     ini_set('display_errors', 1);
     ini_set('html_errors', 1);
 
-    class Pelicula{
+    class Ficha{
 
         private $id_pelicula;
         private $titulo;
@@ -29,15 +29,12 @@
         public function __construct(){
         }
         
-        function obtenerDatos($id_categoria){
+        function obtenerDatos($id_pelicula){
 
             $conexion = mysqli_connect('localhost', 'root', '1234');
             mysqli_select_db($conexion, 'cartelera');
-            $consulta = "SELECT * FROM T_Pelicula WHERE id_categoria = $id_categoria;";
+            $consulta = "SELECT * FROM T_Pelicula WHERE id_pelicula = $id_pelicula;";
             $resultado = mysqli_query($conexion, $consulta);
-
-            $peliculas = array();
-            $contador = 0;
             
             if(!$resultado){        
                 $mensaje = 'Consulta inválida: '.mysqli_error($conexion)."\n";
@@ -50,12 +47,9 @@
 
                     $pelicula1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['duracion'], 
                     $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
-
-                    $peliculas[$contador] = $pelicula1;    
-                    $contador++;
                 }
             }
-            return $peliculas;             
+            return $$pelicula1;             
         }
 
         function mostrarCabezera($categoria){
@@ -67,11 +61,11 @@
                 </div>";
         }
         
-        function mostrarPelicula($id_categoria, $categoria){
+        function mostrarFicha($id_pelicula, $categoria){
 
             $pelicula2 = new Pelicula();
     
-            $peliculas = $pelicula2->obtenerDatos($id_categoria);
+            $peliculas = $pelicula2->obtenerDatos($id_pelicula);
     
             for ($i=0; $i < count($peliculas); $i++) {
                 echo "
@@ -91,11 +85,6 @@
                         <div class='tercera_columna'></div>                
                     </div>";
             }  
-        }
-
-        function longitudSinopsis($sinopsis){
-            $resumen = substr($sinopsis, 0, 200);
-            return $resumen;        
         }
         
         public function getIdPelicula(){

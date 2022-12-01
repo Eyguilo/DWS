@@ -9,19 +9,19 @@
         require("pelicula.php");
 
         $estilo;
-        $categoria = $_GET['categoria'];
+        $id_categoria = $_GET['id_categoria'];
 
-        if($categoria == "terror"){
-            $id_categoria = 1;
-        }elseif($categoria == "anime"){
-            $id_categoria = 2;
+        if($id_categoria == 1){
+            $categoria = "terror";
+        }elseif($id_categoria == 2){
+            $categoria = "anime";
         }
 
         echo "
             <meta charset='UTF-8'>
             <meta http-equiv='X-UA-Compatible' content='IE=edge'>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-            <link rel='stylesheet' href='css/estilos_".$categoria.".css'>
+            <link rel='stylesheet' href='css/peliculas_".$categoria.".css'>
             <title>Películas: ".$categoria."</title>";
     ?>
 </head>
