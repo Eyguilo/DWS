@@ -5,7 +5,6 @@
 
         ini_set('display_errors', 1);
         ini_set('html_errors', 1);
-
         require("pelicula.php");
 
         $estilo;
@@ -27,13 +26,11 @@
 </head>
 <body>
     <?php
-
         $pelicula = new Pelicula();
         $pelicula->mostrarCabezera($categoria);
         $pelicula->mostrarPelicula($id_categoria, $categoria);
 
         echo "</div>";
-
     ?>      
 </body>
 </html>

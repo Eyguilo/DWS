@@ -83,12 +83,12 @@
                             </div>
                             <div class='duracion_caja'>Duración: ".$peliculas[$i]->getDuracion()." min.</div>
                         </div>
-                    <div class='segunda_columna'>
-                        <div class='votos_caja'>Votos: ".$peliculas[$i]->getVotos()."</div>
-                        <div class='sinopsis_caja'>".$pelicula2->longitudSinopsis($peliculas[$i]->getSinopsis())."<a class='enlace_ficha' href='ficha.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."'>...</a></div>
-                        <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='ficha.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."'>Ver ficha</a></div>
-                    </div>
-                        <div class='tercera_columna'></div>                
+                        <div class='segunda_columna'>
+                            <div class='votos_caja'>Votos: ".$peliculas[$i]->getVotos()."</div>
+                            <div class='sinopsis_caja'>".$pelicula2->longitudSinopsis($peliculas[$i]->getSinopsis())."<a class='enlace_ficha' href='fichas.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."'>...</a></div>
+                            <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='fichas.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."&id_categoria=".$peliculas[$i]->getIdCategoria()."'>Ver ficha</a></div>
+                        </div>
+                            <div class='tercera_columna'></div>                
                     </div>";
             }  
         }
