@@ -39,7 +39,7 @@ html, body{
     border-radius: 5px;
 }
 .segunda_caja{
-    height: 30%;
+    height: 70%;
     width: 90%;
     margin-left: 5%;
     margin-bottom: 0.5%;
@@ -51,18 +51,19 @@ html, body{
     background-color: black;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 20px 0px 0px 20px;
+    border-radius: 20px;
 }
 .titulo_caja{
     color: white;
     text-align: center;
     width: 100%;
+    font-size: 150%;
     margin-top: 2%;
 }
 .imagen_caja{
     margin-top: 5%;
-    height: 70%;
-    width: 45%;
+    height: 80%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -74,7 +75,7 @@ img{
     color: white;
     text-align: center;
     margin-top: 3%;
-    font-size: 100%;
+    font-size: 150%;
     font-weight: bolder;
 }
 .segunda_columna{
@@ -83,13 +84,38 @@ img{
     width: 64%;
     background-color: black;
     margin-left: 1%;
+    border-radius: 20px 0px 0px 20px;
 }
 .votos_caja{
     color: white;
     text-align: right;
-    font-size: 100%;
+    font-size: 150%;
     font-weight: bolder;
     margin-top: 1%; 
+    height: 10%;
+    width: 100%;
+}
+.ano_caja{
+    color: white;
+    text-align: justify;
+    font-size: 150%;
+    margin-left: 5%;
+    height: 10%;
+    width: 100%;
+}
+.directores_caja{
+    color: white;
+    text-align: justify;
+    font-size: 150%;
+    margin-left: 5%;
+    height: 10%;
+    width: 100%;
+}
+.reparto_caja{
+    color: white;
+    text-align: justify;
+    font-size: 150%;
+    margin-left: 5%;
     height: 10%;
     width: 100%;
 }
@@ -100,27 +126,6 @@ img{
     height: 55%;
     margin-left: 5%;
     width: 95%;
-    margin-top: 5%;
-}
-.enlace_caja{
-    color: white;
-    text-align: right;
-    font-size: 100%;
-    font-weight: bolder;
-    width: 100%;
-}
-.enlace_ficha{
-    color:white;
-}
-.enlace_ficha:link{
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-}
-.enlace_ficha:hover{
-    background-color: purple;
-    color: white;
-    border-radius: 5px;
 }
 .tercera_columna{
     float: left;

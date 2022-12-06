@@ -1,0 +1,136 @@
+* {
+    margin: 0%; 
+    padding: 0%;
+}
+html, body{
+    height: 100%;
+}
+.contenedor{
+    height: 100%;
+    width: 100%;
+    padding-top: 1%;
+    background-color: rgb(0, 109, 0);
+    overflow: auto;
+}
+.primera_caja{
+    background-color: black;
+    width: 90%;
+    margin-left: 5%;
+    color: white;
+    margin-bottom: 2%;
+    border-radius: 20px;
+    height: 7%;
+}
+.titulo_categoria{
+    padding-left: 2%;
+}
+.enlace_inicio{
+    color:white;
+}
+.enlace_inicio:link{
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin-left: 2%;
+}
+.enlace_inicio:hover{
+    background-color: purple;
+    color: white;
+    border-radius: 5px;
+}
+.segunda_caja{
+    height: 70%;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 0.5%;
+}
+.primera_columna{
+    float: left;
+    height: 100%;
+    width: 25%;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+.titulo_caja{
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-top: 2%;
+    font-size: 150%;
+}
+.imagen_caja{
+    margin-top: 5%;
+    height: 80%;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+img{
+    height: 100%;
+    width: 100%;
+}
+.duracion_caja{
+    color: white;
+    text-align: center;
+    margin-top: 3%;
+    font-size: 150%;
+    font-weight: bolder;
+}
+.segunda_columna{
+    float: left;
+    height: 100%;
+    width: 64%;
+    background-color: black;
+    margin-left: 1%;
+    border-radius: 20px 0px 0px 20px;
+}
+.votos_caja{
+    color: white;
+    text-align: right;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 1%; 
+    height: 10%;
+    width: 100%;
+}
+.ano_caja{
+    color: white;
+    text-align: justify;
+    font-size: 150%;
+    margin-left: 5%;
+    height: 10%;
+    width: 100%;
+}
+.directores_caja{
+    color: white;
+    text-align: justify;
+    font-size: 150%;
+    margin-left: 5%;
+    height: 10%;
+    width: 100%;
+}
+.reparto_caja{
+    color: white;
+    text-align: justify;
+    font-size: 150%;
+    margin-left: 5%;
+    height: 10%;
+    width: 100%;
+}
+.sinopsis_caja{
+    color: white;
+    text-align: justify;
+    font-size: 150%;
+    height: 55%;
+    margin-left: 5%;
+    width: 95%;
+}
+.tercera_columna{
+    float: left;
+    height: 100%;
+    width: 10%;
+    background-color: black;
+    border-radius: 0px 20px 20px 0px;
+}

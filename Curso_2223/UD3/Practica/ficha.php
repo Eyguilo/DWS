@@ -78,6 +78,9 @@
                         </div>
                         <div class='segunda_columna'>
                             <div class='votos_caja'>Votos: ".$pelicula->getVotos()."</div>
+                            <div class='ano_caja'>Año: ".$pelicula->getAno()."</div>
+                            <div class='directores_caja'>Directores: </div>
+                            <div class='reparto_caja'>Reparto: </div>
                             <div class='sinopsis_caja'>".$pelicula->getSinopsis()."</div>
                         </div>
                         <div class='tercera_columna'></div>                
