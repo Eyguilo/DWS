@@ -8,30 +8,17 @@
     <title>Categorías</title>
 </head>
 <body>
+    <?php
 
-<?php
-    echo"
-    <div class='contenedor'>
-        <div class='caja_uno'><h1>Categorías</h1></div>
-        <div class='caja_dos'>
-            <div class='columna_uno'>
-                <div class='caja_imagen'>
-                    <a href='peliculas.php?id_categoria=1'>
-                        <img src='imagenes/simbolo_terror.png' alt='simbolo_terror'>
-                    <p>Terror</p></a>
-                </div>
-            </div>
-            
-            <div class='columna_dos'>
-                <div class='caja_imagen'>
-                    <a href='peliculas.php?id_categoria=2'>
-                        <img src='imagenes/one_piece.png' alt='simbolo_anime'>
-                        <p>Anime</p>
-                    </a>
-                </div>                
-            </div>
-        </div>
-    </div>"
+        ini_set('display_errors', 1);
+        ini_set('html_errors', 1);
+
+        require("categoria.php");
+
+        $categoria1 = new Categoria();
+        $categoria1->mostrarCabezera();
+        $categoria1->mostrarCategorias();
+
     ?>  
 </body>
 </html>
