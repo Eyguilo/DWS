@@ -9,7 +9,7 @@ html, body{
     height: 100%;
     width: 100%;
     padding-top: 1%;
-    background-color: rgb(228, 83, 0);
+    background:linear-gradient(150deg, rgb(35, 29, 37), rgb(116, 56, 0), rgb(35, 29, 37));
     overflow: auto;
 }
 .primera_caja{
@@ -60,11 +60,12 @@ html, body{
     margin-top: 2%;
 }
 .imagen_caja{
-    margin-top: 5%;
+    margin-top: 3%;
     height: 70%;
     width: 45%;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid white;
 }
 img{
     height: 100%;
@@ -73,7 +74,7 @@ img{
 .duracion_caja{
     color: white;
     text-align: center;
-    margin-top: 3%;
+    margin-top: 1%;
     font-size: 100%;
     font-weight: bolder;
 }

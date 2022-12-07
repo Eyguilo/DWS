@@ -9,7 +9,7 @@ html, body{
     height: 100%;
     width: 100%;
     padding-top: 1%;
-    background-color: rgb(0, 109, 0);
+    background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);
     overflow: auto;
 }
 .primera_caja{
@@ -63,9 +63,10 @@ html, body{
 .imagen_caja{
     margin-top: 5%;
     height: 80%;
-    width: 75%;
+    width: 85%;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid white;
 }
 img{
     height: 100%;
