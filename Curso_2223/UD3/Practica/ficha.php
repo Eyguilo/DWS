@@ -1,4 +1,4 @@
-<?php
+fg<?php
 
     ini_set('display_errors', 1);
     ini_set('html_errors', 1);
@@ -77,7 +77,12 @@
                             <div class='duracion_caja'>Duración: ".$pelicula->getDuracion()." min.</div>
                         </div>
                         <div class='segunda_columna'>
-                            <div class='votos_caja'>Votos: ".$pelicula->getVotos()."</div>
+                            <div class='votos_caja'>
+                                <form action='voto.php' method='POST'>
+                                    <input id='id_campo_1' name='nombre_campo_1' type='hiden' value='1'><br>
+                                    <input type='button' value='Votar' class='boton'>
+                                </form>
+                            </div>
                             <div class='ano_caja'>Año: ".$pelicula->getAno()."</div>
                             <div class='directores_caja'>Directores: </div>
                             <div class='reparto_caja'>Reparto: </div>

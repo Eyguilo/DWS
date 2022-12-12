@@ -88,13 +88,23 @@ img{
     border-radius: 20px 0px 0px 20px;
 }
 .votos_caja{
-    color: white;
     text-align: right;
-    font-size: 150%;
-    font-weight: bolder;
     margin-top: 1%; 
     height: 10%;
     width: 100%;
+}
+.boton{
+    font-size:100%;
+    font-weight:bold;
+    color:white;
+    background:#638cb5;
+    border:0px;
+    width:80px;
+    height:40%;
+    border-radius: 20px;
+}
+.boton:hover{
+    color: purple;
 }
 .ano_caja{
     color: white;
