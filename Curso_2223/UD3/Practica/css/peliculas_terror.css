@@ -38,6 +38,9 @@ html, body{
     color: white;
     border-radius: 5px;
 }
+select{
+    text-align: left;
+}
 .segunda_caja{
     height: 30%;
     width: 90%;

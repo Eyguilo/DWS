@@ -5,16 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='css/voto.css'> 
-    <title>Voto</title>
+    <title>Sumar voto</title>
 </head>
 <body>
     <?php
         ini_set('display_errors', 1);
         ini_set('html_errors', 1);
 
-        $valor = $_POST['nombre_campo_1'];
+        $id_pelicula = $_POST['nombre_campo_1'];
 
+        sumarVoto($id_pelicula);
         mostrarMensaje();
+
+        function sumarVoto($id_pelicula){
+
+            $conexion = mysqli_connect('localhost', 'root', '1234');
+            mysqli_select_db($conexion, 'cartelera');
+            $consulta = "UPDATE T_Pelicula SET votos = votos + 1 WHERE id_pelicula = $id_pelicula;";
+            $resultado = mysqli_query($conexion, $consulta);
+            
+            if(!$resultado){        
+                $mensaje = 'Consulta inválida: '.mysqli_error($conexion)."\n";
+                $mensaje .= 'Consulta realitzada: '.$consulta;
+                die($mensaje);        
+            }          
+        }
 
         function mostrarMensaje(){
 

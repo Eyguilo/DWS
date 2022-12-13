@@ -29,11 +29,11 @@
         public function __construct(){
         }
         
-        function obtenerDatos($id_categoria){
+        function obtenerDatos($id_categoria, $valor_ordenacion){
 
             $conexion = mysqli_connect('localhost', 'root', '1234');
             mysqli_select_db($conexion, 'cartelera');
-            $consulta = "SELECT * FROM T_Pelicula WHERE id_categoria = $id_categoria;";
+            $consulta = "SELECT * FROM T_Pelicula WHERE id_categoria = $id_categoria $valor_ordenacion;";
             $resultado = mysqli_query($conexion, $consulta);
 
             $peliculas = array();
@@ -64,14 +64,23 @@
                 <div class='primera_caja'>
                     <h1 class='titulo_categoria'>Categoría: ".$categoria."</h1>
                     <a class='enlace_inicio' href='categorias.php'>Inicio</a>
+                    <form action='peliculas.php' method='POST'>
+                        <select name='ordenacion' id='ordenacion' onchange='this.form.submit()'>
+                            <option value='0'>Predeterminado</option>
+                            <option value='1'>Ascendente por votos</option>
+                            <option value='2'>Descendente por votos</option>
+                            <option value='3'>Ascendente por título</option>
+                            <option value='4'>Descendente por título</option>
+                        </select>
+                    </form>
                 </div>";
         }
         
-        function mostrarPelicula($id_categoria, $categoria){
+        function mostrarPelicula($id_categoria, $categoria, $valor_ordenacion){
 
             $pelicula2 = new Pelicula();
     
-            $peliculas = $pelicula2->obtenerDatos($id_categoria);
+            $peliculas = $pelicula2->obtenerDatos($id_categoria, $valor_ordenacion);
     
             for ($i=0; $i < count($peliculas); $i++) {
                 echo "
@@ -85,7 +94,7 @@
                         </div>
                         <div class='segunda_columna'>
                             <div class='votos_caja'>Votos: ".$peliculas[$i]->getVotos()."</div>
-                            <div class='sinopsis_caja'>".$pelicula2->longitudSinopsis($peliculas[$i]->getSinopsis())."<a class='enlace_ficha' href='fichas.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."&id_categoria=".$peliculas[$i]->getIdCategoria()."'>...</a></div>
+                            <div class='sinopsis_caja'>".$pelicula2->longitudSinopsis($peliculas[$i]->getSinopsis())."<a class='enlace_ficha' href='fichas.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."&id_categoria=".$peliculas[$i]->getIdCategoria()."'></a></div>
                             <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='fichas.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."&id_categoria=".$peliculas[$i]->getIdCategoria()."'>Ver ficha</a></div>
                         </div>
                             <div class='tercera_columna'></div>                
@@ -94,8 +103,13 @@
         }
 
         function longitudSinopsis($sinopsis){
-            $resumen = substr($sinopsis, 0, 200);
-            return $resumen;        
+
+            if(strlen($sinopsis) > 300){
+                $resumen = substr($sinopsis, 0, 300)."...";
+                return $resumen;  
+            } else{
+                return $sinopsis;
+            }      
         }
         
         public function getIdPelicula(){

@@ -7,7 +7,6 @@
         ini_set('html_errors', 1);
         require("pelicula.php");
 
-        $estilo;
         $id_categoria = $_GET['id_categoria'];
 
         if($id_categoria == 1){
@@ -26,9 +25,32 @@
 </head>
 <body>
     <?php
+    
+        $ordenacion = $_POST['ordenacion'];
+        $valor_ordenacion;
+        echo var_dump($ordenacion);
+
+        switch ($ordenacion) {
+            case 1:
+                $valor_ordenacion = "ORDER BY votos ASC";
+                break;
+            case 2:
+                $valor_ordenacion = "ORDER BY votos DESC";
+                break;
+            case 3:
+                $valor_ordenacion = "ORDER BY titulo ASC";
+                break;
+            case 4:
+                $valor_ordenacion = "ORDER BY titulo DESC";
+                break;
+            default:
+                $valor_ordenacion = "";
+                break;
+        }
+
         $pelicula = new Pelicula();
         $pelicula->mostrarCabezera($categoria);
-        $pelicula->mostrarPelicula($id_categoria, $categoria);
+        $pelicula->mostrarPelicula($id_categoria, $categoria, $valor_ordenacion);
 
         echo "</div>";
     ?>      
