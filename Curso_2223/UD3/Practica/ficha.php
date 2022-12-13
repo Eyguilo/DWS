@@ -1,4 +1,4 @@
-fg<?php
+<?php
 
     ini_set('display_errors', 1);
     ini_set('html_errors', 1);
@@ -79,8 +79,8 @@ fg<?php
                         <div class='segunda_columna'>
                             <div class='votos_caja'>
                                 <form action='voto.php' method='POST'>
-                                    <input id='id_campo_1' name='nombre_campo_1' type='hiden' value='1'><br>
-                                    <input type='button' value='Votar' class='boton'>
+                                    <input id='id_campo_1' name='nombre_campo_1' type='hidden' value='1'>
+                                    <a href='voto.php'><input class='boton' type='submit' value='Votar'></a><br>
                                 </form>
                             </div>
                             <div class='ano_caja'>Año: ".$pelicula->getAno()."</div>
