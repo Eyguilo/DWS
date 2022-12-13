@@ -19,16 +19,17 @@ html, body{
     color: white;
     margin-bottom: 2%;
     border-radius: 20px;
-    height: 7%;
+    height: 9%;
 }
 .titulo_categoria{
     padding-left: 2%;
+    margin-bottom: 1%;
 }
 .enlace_inicio{
     color:white;
+    font-size: 125%;
 }
 .enlace_inicio:link{
-    font-weight: bold;
     color: white;
     text-decoration: none;
     margin-left: 2%;
@@ -39,7 +40,7 @@ html, body{
     border-radius: 5px;
 }
 .segunda_caja{
-    height: 85%;
+    height: 75%;
     width: 90%;
     margin-left: 5%;
 }

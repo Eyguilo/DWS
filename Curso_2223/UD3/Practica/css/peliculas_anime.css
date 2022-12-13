@@ -19,16 +19,18 @@ html, body{
     color: white;
     margin-bottom: 2%;
     border-radius: 20px;
-    height: 7%;
+    height: 9%;
 }
 .titulo_categoria{
     padding-left: 2%;
+    margin-bottom: 1%;
 }
 .enlace_inicio{
     color:white;
+    margin-right: 2%;
+    font-size: 125%;
 }
 .enlace_inicio:link{
-    font-weight: bold;
     color: white;
     text-decoration: none;
     margin-left: 2%;
@@ -38,8 +40,43 @@ html, body{
     color: white;
     border-radius: 5px;
 }
+.boton_desplegable{
+    border-radius: 5px 5px 0px 0px;
+    color: white;
+    font-size: 125%;
+}
+.desplegable{
+    position: relative;
+    display: inline-block;
+    width: 11.75%;
+}
+.contenido_desplegable{
+    display: none;
+    position: absolute;
+    background-color: rgb(0, 41, 128);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    font-size: 125%;
+}
+.contenido_desplegable a{
+    color: white;
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+}
+.contenido_desplegable a:hover {
+    background-color: rgb(0, 153, 255);
+    border-radius: 5px;
+}
+.desplegable:hover .contenido_desplegable {
+    display: block;
+    border-radius: 0px 0px 5px 5px;
+}
+.desplegable:hover .boton_desplegable {
+    background-color: rgb(0, 41, 128);
+    padding-left: 5%;
+}
 .segunda_caja{
-    height: 30%;
+    height: 35%;
     width: 90%;
     margin-left: 5%;
     margin-bottom: 0.5%;
@@ -56,6 +93,7 @@ html, body{
 .titulo_caja{
     color: white;
     text-align: center;
+    font-size: 125%;
     width: 100%;
     margin-top: 2%;
 }
@@ -75,7 +113,7 @@ img{
     color: white;
     text-align: center;
     margin-top: 1%;
-    font-size: 100%;
+    font-size: 125%;
     font-weight: bolder;
 }
 .segunda_columna{
@@ -88,7 +126,7 @@ img{
 .votos_caja{
     color: white;
     text-align: right;
-    font-size: 100%;
+    font-size: 125%;
     font-weight: bolder;
     margin-top: 1%; 
     height: 10%;
@@ -106,7 +144,7 @@ img{
 .enlace_caja{
     color: white;
     text-align: right;
-    font-size: 100%;
+    font-size: 125%;
     font-weight: bolder;
     width: 100%;
 }

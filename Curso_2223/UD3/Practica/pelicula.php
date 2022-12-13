@@ -61,8 +61,8 @@
                 <div class='primera_caja'>
                     <h1 class='titulo_categoria'>Categoría: ".$categoria."</h1>
                     <a class='enlace_inicio' href='categorias.php'>Inicio</a>
-                    <div class='desplegable>
-                        <button class='boton_desplegable'>Ordenar por...</button>
+                    <div class='desplegable'>
+                        <p class='boton_desplegable'>Ordenar por...</p>
                         <div class='contenido_desplegable'>
                             <a href='peliculas.php?id_categoria=".$id_categoria."&ordenacion=0'>Predeterminado</a>
                             <a href='peliculas.php?id_categoria=".$id_categoria."&ordenacion=1'>Ascendete por votos</a>
