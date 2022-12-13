@@ -79,7 +79,7 @@
                         <div class='segunda_columna'>
                             <div class='votos_caja'>
                                 <form action='voto.php' method='POST'>
-                                    <input id='id_campo_1' name='nombre_campo_1' type='hidden' value='".$pelicula->getIdPelicula()."'>
+                                    <input id='nombre_campo_1' name='nombre_campo_1' type='hidden' value='".$pelicula->getIdPelicula()."'>
                                     <a href='voto.php'><input class='boton' type='submit' value='Votar'></a><br>
                                 </form>
                             </div>

@@ -1,8 +1,5 @@
 <?php
 
-    ini_set('display_errors', 1);
-    ini_set('html_errors', 1);
-
     class Pelicula{
 
         private $id_pelicula;
@@ -58,21 +55,22 @@
             return $peliculas;             
         }
 
-        function mostrarCabezera($categoria){
+        function mostrarCabezera($categoria, $id_categoria){
             echo "    
             <div class='contenedor'>
                 <div class='primera_caja'>
                     <h1 class='titulo_categoria'>Categoría: ".$categoria."</h1>
                     <a class='enlace_inicio' href='categorias.php'>Inicio</a>
-                    <form action='peliculas.php' method='POST'>
-                        <select name='ordenacion' id='ordenacion' onchange='this.form.submit()'>
-                            <option value='0'>Predeterminado</option>
-                            <option value='1'>Ascendente por votos</option>
-                            <option value='2'>Descendente por votos</option>
-                            <option value='3'>Ascendente por título</option>
-                            <option value='4'>Descendente por título</option>
-                        </select>
-                    </form>
+                    <div class='desplegable>
+                        <button class='boton_desplegable'>Ordenar por...</button>
+                        <div class='contenido_desplegable'>
+                            <a href='peliculas.php?id_categoria=".$id_categoria."&ordenacion=0'>Predeterminado</a>
+                            <a href='peliculas.php?id_categoria=".$id_categoria."&ordenacion=1'>Ascendete por votos</a>
+                            <a href='peliculas.php?id_categoria=".$id_categoria."&ordenacion=2'>Descendente por votos</a>
+                            <a href='peliculas.php?id_categoria=".$id_categoria."&ordenacion=3'>Ascendente por títulos</a>
+                            <a href='peliculas.php?id_categoria=".$id_categoria."&ordenacion=4'>Descendente por títulos</a>
+                        </div>
+                    </div>
                 </div>";
         }
         
@@ -94,7 +92,7 @@
                         </div>
                         <div class='segunda_columna'>
                             <div class='votos_caja'>Votos: ".$peliculas[$i]->getVotos()."</div>
-                            <div class='sinopsis_caja'>".$pelicula2->longitudSinopsis($peliculas[$i]->getSinopsis())."<a class='enlace_ficha' href='fichas.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."&id_categoria=".$peliculas[$i]->getIdCategoria()."'></a></div>
+                            <div class='sinopsis_caja'>".$pelicula2->longitudSinopsis($peliculas[$i]->getSinopsis())."</div>
                             <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='fichas.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."&id_categoria=".$peliculas[$i]->getIdCategoria()."'>Ver ficha</a></div>
                         </div>
                             <div class='tercera_columna'></div>                

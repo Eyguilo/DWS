@@ -24,6 +24,40 @@ html, body{
 .titulo_categoria{
     padding-left: 2%;
 }
+.boton_desplegable{
+    background-color: #4CAF50;
+    color: rgb(211, 8, 8);
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.desplegable{
+    position: relative;
+    display: inline-block;
+}
+.contenido_desplegable{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.contenido_desplegable a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.contenido_desplegable a:hover {
+    background-color: #f1f1f1
+}
+.desplegable:hover .contenido_desplegable {
+    display: block;
+}
+.desplegable:hover .boton_desplegable {
+    background-color: #3e8e41;
+}   
 .enlace_inicio{
     color:white;
 }
@@ -38,11 +72,8 @@ html, body{
     color: white;
     border-radius: 5px;
 }
-select{
-    text-align: left;
-}
 .segunda_caja{
-    height: 30%;
+    height: 35%;
     width: 90%;
     margin-left: 5%;
     margin-bottom: 0.5%;

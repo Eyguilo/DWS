@@ -2,9 +2,6 @@
 <html lang='es'>
 <head>
     <?php
-
-        ini_set('display_errors', 1);
-        ini_set('html_errors', 1);
         require("pelicula.php");
 
         $id_categoria = $_GET['id_categoria'];
@@ -26,9 +23,8 @@
 <body>
     <?php
     
-        $ordenacion = $_POST['ordenacion'];
+        $ordenacion = $_GET['ordenacion'];
         $valor_ordenacion;
-        echo var_dump($ordenacion);
 
         switch ($ordenacion) {
             case 1:
@@ -49,7 +45,7 @@
         }
 
         $pelicula = new Pelicula();
-        $pelicula->mostrarCabezera($categoria);
+        $pelicula->mostrarCabezera($categoria, $id_categoria);
         $pelicula->mostrarPelicula($id_categoria, $categoria, $valor_ordenacion);
 
         echo "</div>";

@@ -12,11 +12,18 @@
         ini_set('display_errors', 1);
         ini_set('html_errors', 1);
 
+        
+
         $id_pelicula = $_POST['nombre_campo_1'];
 
         sumarVoto($id_pelicula);
         mostrarMensaje();
 
+
+
+
+
+        
         function sumarVoto($id_pelicula){
 
             $conexion = mysqli_connect('localhost', 'root', '1234');
@@ -30,7 +37,6 @@
                 die($mensaje);        
             }          
         }
-
         function mostrarMensaje(){
 
             echo"
