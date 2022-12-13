@@ -15,9 +15,18 @@
 
         require("categoria.php");
 
+        echo "
+            <div class='lines'>
+                <div class='line'>::after</div>
+                <div class='line'>::after</div>
+                <div class='line'>::after</div>";
+        
+
         $categoria1 = new Categoria();
         $categoria1->mostrarCabezera();
         $categoria1->mostrarCategorias();
+
+        echo "</div>";
 
     ?>  
 </body>
