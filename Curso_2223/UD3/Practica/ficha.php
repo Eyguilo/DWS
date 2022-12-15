@@ -49,9 +49,8 @@
                 $mensaje = 'Consulta inválida: '.mysqli_error($conexion)."\n";
                 $mensaje .= 'Consulta realitzada: '.$consulta;
                 die($mensaje);        
-            } else{                   
+            } else{   
                 while($registro = mysqli_fetch_assoc($resultado)){
-    
                     var_dump($registro['nombre_reparto']);
 
                     $ficha1 = new Ficha();
@@ -60,7 +59,6 @@
                     ,$registro['duracion'], $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
 
                     $actor = $actor.$registro['nombre_reparto'].", ";
-
                 }
             }
 
@@ -70,12 +68,13 @@
             return $ficha;             
         }
 
-        function mostrarCabezera($categoria){
+        function mostrarCabezera($id_categoria, $categoria){
             echo "    
             <div class='contenedor'>
                 <div class='primera_caja'>
                     <h1 class='titulo_categoria'>Categoría: ".$categoria."</h1>
                     <a class='enlace_inicio' href='categorias.php'>Inicio</a>
+                    <a class='enlace_inicio' href='peliculas.php?id_categoria=".$id_categoria."'>Volver</a>
                 </div>";
         }
         

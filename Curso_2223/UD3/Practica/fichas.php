@@ -28,7 +28,7 @@
     <?php
 
         $ficha1 = new Ficha();
-        $ficha1->mostrarCabezera($categoria);
+        $ficha1->mostrarCabezera($id_categoria, $categoria);
         $ficha1->mostrarFicha($id_pelicula, $categoria);
     ?>
 </body>
