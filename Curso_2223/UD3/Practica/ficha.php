@@ -9,17 +9,21 @@
         private $titulo;
         private $imagen;
         private $ano;
+        private $direccion;
+        private $reparto;
         private $duracion;
         private $sinopsis;
         private $votos;
         private $id_categoria;
 
-        private function init($id_pelicula,$titulo,$imagen,$ano,$duracion,$sinopsis,$votos, $id_categoria){
+        private function init($id_pelicula,$titulo,$imagen,$ano,$direccion, $reparto,$duracion,$sinopsis,$votos, $id_categoria){
 
             $this->id_pelicula=$id_pelicula;
             $this->titulo=$titulo;
             $this->imagen=$imagen;  
             $this->ano=$ano;
+            $this->direccion=$direccion;
+            $this->reparto=$reparto;            
             $this->duracion=$duracion;
             $this->sinopsis=$sinopsis;
             $this->votos=$votos;
@@ -33,8 +37,15 @@
 
             $conexion = mysqli_connect('localhost', 'root', '1234');
             mysqli_select_db($conexion, 'cartelera');
-            $consulta = "SELECT * FROM T_Pelicula WHERE id_pelicula = $id_pelicula;";
+            $consulta = "SELECT * FROM T_Pelicula 
+            INNER JOIN T_Pelicula_Reparto ON T_Pelicula.id_pelicula = T_Pelicula_Reparto.id_pelicula
+            INNER JOIN T_Reparto ON T_Pelicula_Reparto.id_reparto = T_Reparto.id_reparto
+            INNER JOIN T_Pelicula_Director ON T_Pelicula.id_pelicula = T_Pelicula_Director.id_pelicula
+            INNER JOIN T_Director ON T_Pelicula_Director.id_director = T_Director.id_director WHERE T_Pelicula.id_pelicula = $id_pelicula;";
             $resultado = mysqli_query($conexion, $consulta);
+
+            $contador = 0;
+            $actor = "";
             
             if(!$resultado){        
                 $mensaje = 'Consulta inválida: '.mysqli_error($conexion)."\n";
@@ -45,11 +56,18 @@
     
                     $ficha1 = new Ficha();
 
-                    $ficha1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['duracion'], 
-                    $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
+                    $ficha1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['nombre_director'], 
+                    $registro['nombre_reparto'],$registro['duracion'], $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
+
+                    $actor = $actor.$registro['nombre_reparto'].", ";
+                    $contador++;
                 }
             }
-            return $ficha1;             
+
+            $actores = substr($actor, 0, -2);
+            $ficha = [$ficha1, $actores];
+
+            return $ficha;             
         }
 
         function mostrarCabezera($categoria){
@@ -70,23 +88,23 @@
             echo "
                     <div class='segunda_caja'>
                         <div class='primera_columna'>
-                            <div class='titulo_caja'><h3>".$pelicula->getTitulo()."</h3></div>
+                            <div class='titulo_caja'><h3>".$pelicula[0]->getTitulo()."</h3></div>
                             <div class='imagen_caja'>
-                                <img src='imagenes/".$categoria."/".$pelicula->getImagen()."' alt='".$pelicula->getImagen()."'>
+                                <img src='imagenes/".$categoria."/".$pelicula[0]->getImagen()."' alt='".$pelicula[0]->getImagen()."'>
                             </div>
-                            <div class='duracion_caja'>Duración: ".$pelicula->getDuracion()." min.</div>
+                            <div class='duracion_caja'>Duración: ".$pelicula[0]->getDuracion()." min.</div>
                         </div>
                         <div class='segunda_columna'>
                             <div class='votos_caja'>
                                 <form action='voto.php' method='POST'>
-                                    <input id='nombre_campo_1' name='nombre_campo_1' type='hidden' value='".$pelicula->getIdPelicula()."'>
+                                    <input id='nombre_campo_1' name='nombre_campo_1' type='hidden' value='".$pelicula[0]->getIdPelicula()."'>
                                     <a href='voto.php'><input class='boton' type='submit' value='Votar'></a><br>
                                 </form>
                             </div>
-                            <div class='ano_caja'>Año: ".$pelicula->getAno()."</div>
-                            <div class='directores_caja'>Directores: </div>
-                            <div class='reparto_caja'>Reparto: </div>
-                            <div class='sinopsis_caja'>".$pelicula->getSinopsis()."</div>
+                            <div class='ano_caja'>Año: ".$pelicula[0]->getAno()."</div>
+                            <div class='directores_caja'>Dirección: ".$pelicula[0]->getDireccion()."</div>
+                            <div class='reparto_caja'>Reparto: ".$pelicula[1]."</div>
+                            <div class='sinopsis_caja'>".$pelicula[0]->getSinopsis()."</div>
                         </div>
                         <div class='tercera_columna'></div>                
                     </div>
@@ -104,6 +122,9 @@
         }
         public function getAno(){
             return $this->ano;
+        }
+        public function getDireccion(){
+            return $this->direccion;
         }
         public function getDuracion(){
             return $this->duracion;
