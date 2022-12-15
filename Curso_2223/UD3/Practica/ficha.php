@@ -10,20 +10,18 @@
         private $imagen;
         private $ano;
         private $direccion;
-        private $reparto;
         private $duracion;
         private $sinopsis;
         private $votos;
         private $id_categoria;
 
-        private function init($id_pelicula,$titulo,$imagen,$ano,$direccion, $reparto,$duracion,$sinopsis,$votos, $id_categoria){
+        private function init($id_pelicula,$titulo,$imagen,$ano,$direccion,$duracion,$sinopsis,$votos, $id_categoria){
 
             $this->id_pelicula=$id_pelicula;
             $this->titulo=$titulo;
             $this->imagen=$imagen;  
             $this->ano=$ano;
             $this->direccion=$direccion;
-            $this->reparto=$reparto;            
             $this->duracion=$duracion;
             $this->sinopsis=$sinopsis;
             $this->votos=$votos;
@@ -41,10 +39,10 @@
             INNER JOIN T_Pelicula_Reparto ON T_Pelicula.id_pelicula = T_Pelicula_Reparto.id_pelicula
             INNER JOIN T_Reparto ON T_Pelicula_Reparto.id_reparto = T_Reparto.id_reparto
             INNER JOIN T_Pelicula_Director ON T_Pelicula.id_pelicula = T_Pelicula_Director.id_pelicula
-            INNER JOIN T_Director ON T_Pelicula_Director.id_director = T_Director.id_director WHERE T_Pelicula.id_pelicula = $id_pelicula;";
+            INNER JOIN T_Director ON T_Pelicula_Director.id_director = T_Director.id_director 
+            WHERE T_Pelicula.id_pelicula = $id_pelicula;";
             $resultado = mysqli_query($conexion, $consulta);
 
-            $contador = 0;
             $actor = "";
             
             if(!$resultado){        
@@ -54,13 +52,15 @@
             } else{                   
                 while($registro = mysqli_fetch_assoc($resultado)){
     
+                    var_dump($registro['nombre_reparto']);
+
                     $ficha1 = new Ficha();
 
-                    $ficha1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['nombre_director'], 
-                    $registro['nombre_reparto'],$registro['duracion'], $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
+                    $ficha1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['nombre_director']
+                    ,$registro['duracion'], $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
 
                     $actor = $actor.$registro['nombre_reparto'].", ";
-                    $contador++;
+
                 }
             }
 
