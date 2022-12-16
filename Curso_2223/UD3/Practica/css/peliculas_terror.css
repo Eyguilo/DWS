@@ -47,10 +47,10 @@
 .desplegable{
     position: relative;
     display: inline-block;
-    width: 11.75%;
+    width: 16%;
 }
 .contenido_desplegable{
-    width: 101%;
+    width: 95%;
     display: none;
     position: absolute;
     background-color: purple;
