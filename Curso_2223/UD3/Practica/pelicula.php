@@ -26,36 +26,44 @@
         public function __construct(){
         }
         
-        function obtenerDatos($id_categoria, $valor_ordenacion){
+        function obtener_datos($id_categoria, $valor_ordenacion){
 
             $conexion = mysqli_connect('localhost', 'root', '1234');
+            if (mysqli_connect_errno()){
+                echo "Error al conectar MySQL: ".mysqli_connect_error();
+            }
             mysqli_select_db($conexion, 'cartelera');
-            $consulta = "SELECT * FROM T_Pelicula WHERE id_categoria = $id_categoria $valor_ordenacion;";
+            $sanitized_categoria_id = mysqli_real_escape_string($conexion, $id_categoria);
+            $consulta = "SELECT * FROM T_Pelicula WHERE id_categoria = $sanitized_categoria_id $valor_ordenacion;";
             $resultado = mysqli_query($conexion, $consulta);
 
             $peliculas = array();
             $contador = 0;
-            
-            if(!$resultado){        
+
+            if(!$resultado){
                 $mensaje = 'Consulta inválida: '.mysqli_error($conexion)."\n";
                 $mensaje .= 'Consulta realitzada: '.$consulta;
-                die($mensaje);        
-            } else{                   
-                while($registro = mysqli_fetch_assoc($resultado)){
+                die($mensaje);                 
+            } else {
+                if(($resultado->num_rows) > 0){
+                    while($registro = mysqli_fetch_assoc($resultado)){
+
+                        $pelicula1 = new Pelicula();
+
+                        $pelicula1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['duracion'], 
+                        $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
     
-                    $pelicula1 = new Pelicula();
-
-                    $pelicula1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['duracion'], 
-                    $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
-
-                    $peliculas[$contador] = $pelicula1;    
-                    $contador++;
+                        $peliculas[$contador] = $pelicula1;    
+                        $contador++;
+                    }
+                } else{
+                    echo "No hay resultados.";
                 }
-            }
-            return $peliculas;             
+            }     
+            return $peliculas;           
         }
 
-        function mostrarCabezera($categoria, $id_categoria){
+        function pintar_cabezera($categoria, $id_categoria){
             echo "    
             <div class='contenedor'>
                 <div class='primera_caja'>
@@ -74,11 +82,11 @@
                 </div>";
         }
         
-        function mostrarPelicula($id_categoria, $categoria, $valor_ordenacion){
+        function pintar($id_categoria, $categoria, $valor_ordenacion){
 
             $pelicula2 = new Pelicula();
     
-            $peliculas = $pelicula2->obtenerDatos($id_categoria, $valor_ordenacion);
+            $peliculas = $pelicula2->obtener_datos($id_categoria, $valor_ordenacion);
     
             for ($i=0; $i < count($peliculas); $i++) {
                 echo "
@@ -92,7 +100,7 @@
                         </div>
                         <div class='segunda_columna'>
                             <div class='votos_caja'>Votos: ".$peliculas[$i]->getVotos()."</div>
-                            <div class='sinopsis_caja'>".$pelicula2->longitudSinopsis($peliculas[$i]->getSinopsis())."</div>
+                            <div class='sinopsis_caja'>".$pelicula2->longitud_sinopsis($peliculas[$i]->getSinopsis())."</div>
                             <div class='enlace_caja'>Enlace: <a class='enlace_ficha' href='fichas.php?id_pelicula=".$peliculas[$i]->getIdPelicula()."&id_categoria=".$peliculas[$i]->getIdCategoria()."'>Ver ficha</a></div>
                         </div>
                             <div class='tercera_columna'></div>                
@@ -100,7 +108,7 @@
             }  
         }
 
-        function longitudSinopsis($sinopsis){
+        function longitud_sinopsis($sinopsis){
 
             if(strlen($sinopsis) > 300){
                 $resumen = substr($sinopsis, 0, 300)."...";

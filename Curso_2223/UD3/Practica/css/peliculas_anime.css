@@ -2,24 +2,21 @@
     margin: 0%; 
     padding: 0%;
 }
-html, body{
-    height: 100%;
-}
 .contenedor{
     height: 100%;
     width: 100%;
-    padding-top: 1%;
-    background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);
+    position: absolute;
+    display: inline;
+    background-image: url(../imagenes/anime/fondo_anime_3.jpg);
     overflow: auto;
 }
 .primera_caja{
     background-color: black;
-    width: 90%;
-    margin-left: 5%;
     color: white;
     margin-bottom: 2%;
-    border-radius: 20px;
-    height: 9%;
+    padding-top: 0.15%;
+    padding-left: 5%;
+    padding-bottom: 0.5%;
 }
 .titulo_categoria{
     padding-left: 2%;
@@ -44,6 +41,7 @@ html, body{
     border-radius: 5px 5px 0px 0px;
     color: white;
     font-size: 125%;
+    width: 55%;
 }
 .desplegable{
     position: relative;
@@ -51,6 +49,7 @@ html, body{
     width: 11.75%;
 }
 .contenido_desplegable{
+    width: 101%;
     display: none;
     position: absolute;
     background-color: rgb(0, 41, 128);
@@ -69,7 +68,7 @@ html, body{
 }
 .desplegable:hover .contenido_desplegable {
     display: block;
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 5px 5px 5px;
 }
 .desplegable:hover .boton_desplegable {
     background-color: rgb(0, 41, 128);
@@ -88,7 +87,7 @@ html, body{
     background-color: black;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 20px 0px 0px 20px;
+    border-radius: 20px;
 }
 .titulo_caja{
     color: white;
@@ -122,6 +121,7 @@ img{
     width: 64%;
     background-color: black;
     margin-left: 1%;
+    border-radius: 20px 0px 0px 20px;
 }
 .votos_caja{
     color: white;

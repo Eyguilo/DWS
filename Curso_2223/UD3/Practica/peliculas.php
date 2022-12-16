@@ -45,8 +45,8 @@
         }
 
         $pelicula = new Pelicula();
-        $pelicula->mostrarCabezera($categoria, $id_categoria);
-        $pelicula->mostrarPelicula($id_categoria, $categoria, $valor_ordenacion);
+        $pelicula->pintar_cabezera($categoria, $id_categoria);
+        $pelicula->pintar($id_categoria, $categoria, $valor_ordenacion);
 
         echo "</div>";
     ?>      

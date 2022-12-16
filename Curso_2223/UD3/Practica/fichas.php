@@ -2,8 +2,6 @@
 <html lang='es'>
 <head>
     <?php
-        ini_set('display_errors', 1);
-        ini_set('html_errors', 1);
         require("ficha.php");
 
         $id_categoria = $_GET['id_categoria'];
@@ -28,8 +26,8 @@
     <?php
 
         $ficha1 = new Ficha();
-        $ficha1->mostrarCabezera($id_categoria, $categoria);
-        $ficha1->mostrarFicha($id_pelicula, $categoria);
+        $ficha1->pintar_cabezera($id_categoria, $categoria);
+        $ficha1->pintar($id_pelicula, $categoria);
     ?>
 </body>
 </html>

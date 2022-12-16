@@ -18,29 +18,36 @@
         function obtenerDatos(){
 
             $conexion = mysqli_connect('localhost', 'root', '1234');
+            if (mysqli_connect_errno()){
+                echo "Error al conectar MySQL: ".mysqli_connect_error();
+            }
             mysqli_select_db($conexion, 'cartelera');
             $consulta = "SELECT * FROM T_Categoria;";
             $resultado = mysqli_query($conexion, $consulta);
 
-            $peliculas = array();
             $contador = 0;
-            
-            if(!$resultado){        
+
+            if(!$resultado){
                 $mensaje = 'Consulta inválida: '.mysqli_error($conexion)."\n";
                 $mensaje .= 'Consulta realitzada: '.$consulta;
-                die($mensaje);        
-            } else{                   
-                while($registro = mysqli_fetch_assoc($resultado)){
+                die($mensaje);                 
+            } else {
+                if(($resultado->num_rows) > 0){
+                    while($registro = mysqli_fetch_assoc($resultado)){
     
-                    $categoria1 = new Categoria();
-
-                    $categoria1->init($registro['id_categoria'], $registro['nombre'], $registro['imagen']);
-
-                    $categorias[$contador] = $categoria1;    
-                    $contador++;
+                        $categoria1 = new Categoria();
+    
+                        $categoria1->init($registro['id_categoria'], $registro['nombre'], $registro['imagen']);
+    
+                        $categorias[$contador] = $categoria1;    
+                        $contador++;
+                    }
+                } else{
+                    echo "No hay resultados.";
                 }
             }
-            return $categorias;             
+
+            return $categorias;      
         }
 
         function mostrarCabezera(){
@@ -58,7 +65,7 @@
                 <div class='caja_dos'>
                     <div class='columna_uno'>
                         <div class='caja_imagen_1'>
-                            <a href='peliculas.php?id_categoria=".$categorias[0]->getIdCategoria()."'>
+                            <a href='peliculas.php?id_categoria=".$categorias[0]->getIdCategoria()."&ordenacion=0'>
                                 <img src='imagenes/".$categorias[0]->getImagen()."' alt='".$categorias[0]->getImagen()."'>
                             <p>".$categorias[0]->getNombre()."</p></a>
                         </div>

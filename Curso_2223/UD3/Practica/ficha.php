@@ -1,8 +1,4 @@
 <?php
-
-    ini_set('display_errors', 1);
-    ini_set('html_errors', 1);
-
     class Ficha{
 
         private $id_pelicula;
@@ -31,44 +27,51 @@
         public function __construct(){
         }
         
-        function obtenerDatos($id_pelicula){
+        function obtener_datos($id_pelicula){
 
             $conexion = mysqli_connect('localhost', 'root', '1234');
+            if (mysqli_connect_errno()){
+                echo "Error al conectar MySQL: ".mysqli_connect_error();
+            }
             mysqli_select_db($conexion, 'cartelera');
+            $sanitized_pelicula_id = mysqli_real_escape_string($conexion, $id_pelicula);
             $consulta = "SELECT * FROM T_Pelicula 
             INNER JOIN T_Pelicula_Reparto ON T_Pelicula.id_pelicula = T_Pelicula_Reparto.id_pelicula
             INNER JOIN T_Reparto ON T_Pelicula_Reparto.id_reparto = T_Reparto.id_reparto
             INNER JOIN T_Pelicula_Director ON T_Pelicula.id_pelicula = T_Pelicula_Director.id_pelicula
             INNER JOIN T_Director ON T_Pelicula_Director.id_director = T_Director.id_director 
-            WHERE T_Pelicula.id_pelicula = $id_pelicula;";
+            WHERE T_Pelicula.id_pelicula = $sanitized_pelicula_id;";
             $resultado = mysqli_query($conexion, $consulta);
 
             $actor = "";
-            
-            if(!$resultado){        
+
+            if(!$resultado){
                 $mensaje = 'Consulta inválida: '.mysqli_error($conexion)."\n";
                 $mensaje .= 'Consulta realitzada: '.$consulta;
-                die($mensaje);        
-            } else{   
-                while($registro = mysqli_fetch_assoc($resultado)){
-                    var_dump($registro['nombre_reparto']);
+                die($mensaje);                 
+            } else {
+                if(($resultado->num_rows) > 0){
+                    while($registro = mysqli_fetch_assoc($resultado)){
 
-                    $ficha1 = new Ficha();
-
-                    $ficha1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['nombre_director']
-                    ,$registro['duracion'], $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
-
-                    $actor = $actor.$registro['nombre_reparto'].", ";
+                        $ficha1 = new Ficha();
+    
+                        $ficha1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['nombre_director']
+                        ,$registro['duracion'], $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
+    
+                        $actor = $actor.$registro['nombre_reparto'].", ";
+                    }
+                } else{
+                    echo "No hay resultados.";
                 }
-            }
 
-            $actores = substr($actor, 0, -2);
-            $ficha = [$ficha1, $actores];
-
-            return $ficha;             
+                $actores = substr($actor, 0, -2);
+                $ficha = [$ficha1, $actores];
+    
+                return $ficha; 
+            }           
         }
 
-        function mostrarCabezera($id_categoria, $categoria){
+        function pintar_cabezera($id_categoria, $categoria){
             echo "    
             <div class='contenedor'>
                 <div class='primera_caja'>
@@ -78,11 +81,11 @@
                 </div>";
         }
         
-        function mostrarFicha($id_pelicula, $categoria){
+        function pintar($id_pelicula, $categoria){
 
             $ficha2 = new Ficha();
     
-            $pelicula = $ficha2->obtenerDatos($id_pelicula);
+            $pelicula = $ficha2->obtener_datos($id_pelicula);
     
             echo "
                     <div class='segunda_caja'>
