@@ -10,6 +10,9 @@
 <body>
     <?php
 
+    ini_set('display_errors', 1);
+    ini_set('html_errors', 1);
+
         $id_pelicula = $_POST['nombre_campo_1'];
 
         sumar_voto($id_pelicula);
@@ -22,7 +25,8 @@
                 echo "Error al conectar MySQL: ".mysqli_connect_error();
             }
             mysqli_select_db($conexion, 'cartelera');
-            $consulta = "UPDATE T_Pelicula SET votos = votos + 1 WHERE id_pelicula = $id_pelicula;";
+            $sanitized_pelicula_id = mysqli_real_escape_string($conexion, $id_pelicula);
+            $consulta = "UPDATE T_Pelicula SET votos = votos + 1 WHERE id_pelicula = $sanitized_pelicula_id;";
             $resultado = mysqli_query($conexion, $consulta);
 
             if(!$resultado){

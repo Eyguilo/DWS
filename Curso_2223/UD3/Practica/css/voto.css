@@ -24,8 +24,8 @@ a:link{
     font-size: 150%;   
 }
 p:hover{
-    background-color: purple;
-    color: white;
+    background-color: rgba(67, 255, 195, 0.552);
+    color: black;
     border-radius: 20px;
 }
 p{
