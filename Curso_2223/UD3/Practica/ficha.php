@@ -43,7 +43,6 @@
             WHERE T_Pelicula.id_pelicula = $sanitized_pelicula_id;";
             $resultado = mysqli_query($conexion, $consulta);
 
-            $actor = "";
 
             if(!$resultado){
                 $mensaje = 'Consulta inválida: '.mysqli_error($conexion)."\n";
@@ -61,7 +60,7 @@
                         $actor = $actor.$registro['nombre_reparto'].", ";
                     }
                 } else{
-                    echo "No hay resultados.";
+                    echo "<div class='cajaError'><p class='noResultado'>No se ha encontrado resultados sobre los actores y dirección.</p></div>";
                 }
 
                 $actores = substr($actor, 0, -2);
@@ -134,10 +133,4 @@
         public function getSinopsis(){
             return $this->sinopsis;
         }
-        public function getVotos(){
-            return $this->votos;
-        }
-        public function getIdCategoria(){
-            return $this->id_categoria;
-        } 
     }

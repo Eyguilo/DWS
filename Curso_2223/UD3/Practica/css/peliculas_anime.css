@@ -76,9 +76,21 @@
     padding-left: 5%;
     color: white;
 }
+.cajaError{
+    background-color:rgba(255,255,255,.8);
+    border-radius:.25em;
+    box-shadow:0 0 .25em rgba(0,0,0,.25);
+    box-sizing:border-box;
+    left:50%;
+    padding:10vmin;
+    position:fixed;
+    text-align:center;
+    top:50%;
+    transform:translate(-50%, -50%);
+}
 .segunda_caja{
     height: 35%;
-    width: 65%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0.5%;
@@ -97,7 +109,7 @@
 .titulo_caja{
     color: white;
     text-align: center;
-    font-size: 125%;
+    font-size: 100%;
     width: 100%;
     margin-top: 2%;
 }
@@ -143,7 +155,7 @@ img{
 .sinopsis_caja{
     color: white;
     text-align: justify;
-    font-size: 150%;
+    font-size: 125%;
     height: 55%;
     margin-left: 5%;
     width: 95%;

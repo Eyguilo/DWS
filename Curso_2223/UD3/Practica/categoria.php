@@ -43,7 +43,7 @@ d<?php
                         $contador++;
                     }
                 } else{
-                    echo "<div class='cajaError'><p class='noResultado'>No hay resultados.</p></div>";
+                    echo "<div class='cajaError'><p class='noResultado'>No se han encontrado resultados.</p></div>";
                 }
             }
 

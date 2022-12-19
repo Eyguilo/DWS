@@ -24,7 +24,7 @@
     margin-bottom: 1%;
 }
 .enlace_inicio{
-    color:white;
+    color:black;
     font-size: 125%;
 }
 .enlace_inicio:link{
@@ -38,14 +38,26 @@
     color: white;
     border-radius: 5px;
 }
+.cajaError{
+    background-color:rgba(255,255,255,.8);
+    border-radius:.25em;
+    box-shadow:0 0 .25em rgba(0,0,0,.25);
+    box-sizing:border-box;
+    left:50%;
+    padding:10vmin;
+    position:fixed;
+    text-align:center;
+    top:50%;
+    transform:translate(-50%, -50%);
+}
 .segunda_caja{
     height: 60%;
-    width: 75%;
+    width: 80%;
     margin-top: 5%;    
     margin-left: auto;
     margin-right: auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
+    font-size: 80%;
 }
 .primera_columna{
     float: left;
