@@ -10,21 +10,20 @@
 <body>
     <?php
 
-        ini_set('display_errors', 1);
-        ini_set('html_errors', 1);
-
         require("categoria.php");
 
         echo "
+        
             <div class='lines'>
                 <div class='line'>::after</div>
                 <div class='line'>::after</div>
-                <div class='line'>::after</div>";
+                <div class='line'>::after</div>
+                ";
         
 
         $categoria1 = new Categoria();
-        $categoria1->mostrarCabezera();
-        $categoria1->mostrarCategorias();
+        $categoria1->pintarCabezera();
+        $categoria1->pintar();
 
         echo "</div>";
 

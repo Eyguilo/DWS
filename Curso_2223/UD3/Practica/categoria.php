@@ -1,4 +1,4 @@
-<?php
+d<?php
     class Categoria{
 
         private $id_categoria;
@@ -43,44 +43,43 @@
                         $contador++;
                     }
                 } else{
-                    echo "No hay resultados.";
+                    echo "<div class='cajaError'><p class='noResultado'>No hay resultados.</p></div>";
                 }
             }
 
             return $categorias;      
         }
 
-        function mostrarCabezera(){
-            echo"
-                <div class='contenedor'>
+        function pintarCabezera(){
+            echo "
+                <div class='contenedor'> 
                     <div class='caja_uno'><h1>Categorías</h1></div>";
         }
 
-        function mostrarCategorias(){
+        function pintar(){
 
             $categoria2 = new Categoria();
             $categorias = $categoria2->obtenerDatos();
 
             echo"
-                <div class='caja_dos'>
-                    <div class='columna_uno'>
-                        <div class='caja_imagen_1'>
-                            <a href='peliculas.php?id_categoria=".$categorias[0]->getIdCategoria()."&ordenacion=0'>
-                                <img src='imagenes/terror/".$categorias[0]->getImagen()."' alt='".$categorias[0]->getImagen()."'>
-                            <p>".$categorias[0]->getNombre()."</p></a>
+                    <div class='caja_dos'>
+                        <div class='columna_uno'>
+                            <div class='caja_imagen_1'>
+                                <a href='peliculas.php?id_categoria=".$categorias[0]->getIdCategoria()."&ordenacion=0'>
+                                    <img src='imagenes/terror/".$categorias[0]->getImagen()."' alt='".$categorias[0]->getImagen()."'>
+                                <p class='nombreCategoria'>".$categorias[0]->getNombre()."</p></a>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class='columna_dos'>
-                        <div class='caja_imagen_2'>
-                            <a href='peliculas.php?id_categoria=".$categorias[1]->getIdCategoria()."&ordenacion=0'>
-                                <img src='imagenes/anime/".$categorias[1]->getImagen()."' alt='".$categorias[1]->getImagen()."'>
-                                <p>".$categorias[1]->getNombre()."</p>
-                            </a>
-                        </div>                
-                    </div>
-                </div>
-            </div>";
+                        
+                        <div class='columna_dos'>
+                            <div class='caja_imagen_2'>
+                                <a href='peliculas.php?id_categoria=".$categorias[1]->getIdCategoria()."&ordenacion=0'>
+                                    <img src='imagenes/anime/".$categorias[1]->getImagen()."' alt='".$categorias[1]->getImagen()."'>
+                                    <p class='nombreCategoria'>".$categorias[1]->getNombre()."</p>
+                                </a>
+                            </div>                
+                        </div>
+                    </div>";
         }
 
         public function getIdCategoria(){

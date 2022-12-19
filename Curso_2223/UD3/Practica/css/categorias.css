@@ -11,20 +11,34 @@ body {
     width: 100%;
     height: 100%;
     background-color: #171717;
-    color: #000;
     line-height: 1.6;
     position: relative;
     overflow: hidden;
+    text-align: center;
+    font-size: 300%;
 }
 .contenedor {
     width: 100%;
     height: 100%;
+    color: black;
 }
 .caja_uno {
     background-color:rgba(255,255,255);
     border-radius: 20px;
     text-align:center;
     margin-top: 2%;
+}
+.cajaError{
+    background-color:rgba(255,255,255,.8);
+    border-radius:.25em;
+    box-shadow:0 0 .25em rgba(0,0,0,.25);
+    box-sizing:border-box;
+    left:50%;
+    padding:10vmin;
+    position:fixed;
+    text-align:center;
+    top:50%;
+    transform:translate(-50%, -50%);
 }
 h1{
     font-size: 70px;
@@ -36,10 +50,12 @@ h1{
 .columna_uno {
     float: left;
     width: 50%;
+    font-size: 35%;
 }
 .columna_dos {
     float:left;
     width: 50%;
+    font-size: 35%;
 }
 .caja_imagen_1{
     margin-left: 65%;
@@ -61,12 +77,12 @@ a:link{
     font-weight: bolder;
     font-size: 200%;    
 }
-p:hover{
+.nombreCategoria:hover{
     background-color: purple;
     color: white;
     border-radius: 50px;
 }
-p{
+.nombreCategoria{
     color: rgb(255, 123, 255);
 }  
 .lines {
