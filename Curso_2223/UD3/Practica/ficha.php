@@ -77,7 +77,7 @@
                 <div class='primera_caja'>
                     <h1 class='titulo_categoria'>Categoría: ".$categoria."</h1>
                     <a class='enlace_inicio' href='categorias.php'>Inicio</a>
-                    <a class='enlace_inicio' href='peliculas.php?id_categoria=".$id_categoria."'>Volver</a>
+                    <a class='enlace_inicio' href='peliculas.php?id_categoria=".$id_categoria."&ordenacion=0'>Volver</a>
                 </div>";
         }
         

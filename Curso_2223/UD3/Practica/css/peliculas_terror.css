@@ -11,19 +11,20 @@
     overflow: auto;
 }
 .primera_caja{
-    background-color: black;
-    color: white;
-    padding-left: 5%;
-    padding-top: 0.15%;
+    background-color: rgba(255, 255, 255, 0.500);
+    color: black;
     margin-bottom: 2%;
+    padding-top: 0.15%;
+    padding-left: 5%;
     padding-bottom: 0.5%;
+    border-bottom: 1px solid black;
 }
 .titulo_categoria{
     padding-left: 2%;
     margin-bottom: 1%;
 }
 .enlace_inicio{
-    color:white;
+    color:black;
     margin-right: 2%;
     font-size: 125%;
 }
@@ -40,9 +41,10 @@
 }
 .boton_desplegable{
     border-radius: 5px 5px 0px 0px;
-    color: white;
+    color: black;
     font-size: 125%;
     width: 55%;
+    
 }
 .desplegable{
     position: relative;
@@ -74,6 +76,7 @@
 .desplegable:hover .boton_desplegable {
     background-color: purple;
     padding-left: 5%;
+    color:white;
 }
 .segunda_caja{
     height: 35%;
@@ -81,15 +84,17 @@
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 0.5%;
+    font-family: 'Times New Roman', Times, serif;
 }
 .primera_columna{
     float: left;
     height: 100%;
     width: 25%;
-    background-color: rgba(0, 0, 0, 0.750);
+    background-color: rgba(7, 26, 20, 0.75);
     border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid white;
 }
 .titulo_caja{
     color: white;
@@ -121,9 +126,12 @@ img{
     float: left;
     height: 100%;
     width: 64%;
-    background-color: rgba(0, 0, 0, 0.850);
+    background-color: rgba(7, 26, 20, 0.75);
     margin-left: 1%;
     border-radius: 20px 0px 0px 20px;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
 }
 .votos_caja{
     color: white;
@@ -167,6 +175,9 @@ img{
     float: left;
     height: 100%;
     width: 5%;
-    background-color: rgba(0, 0, 0, 0.850);
+    background-color: rgba(7, 26, 20, 0.75);
     border-radius: 0px 20px 20px 0px;
+    border-right: 1px solid white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
 }

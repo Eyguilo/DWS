@@ -73,7 +73,7 @@
                     
                     <div class='columna_dos'>
                         <div class='caja_imagen_2'>
-                            <a href='peliculas.php?id_categoria=".$categorias[1]->getIdCategoria()."'>
+                            <a href='peliculas.php?id_categoria=".$categorias[1]->getIdCategoria()."&ordenacion=0'>
                                 <img src='imagenes/anime/".$categorias[1]->getImagen()."' alt='".$categorias[1]->getImagen()."'>
                                 <p>".$categorias[1]->getNombre()."</p>
                             </a>
