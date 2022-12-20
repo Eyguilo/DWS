@@ -34,7 +34,9 @@
             }
             mysqli_select_db($conexion, 'cartelera');
             $sanitized_categoria_id = mysqli_real_escape_string($conexion, $id_categoria);
-            $consulta = "SELECT * FROM T_Pelicula WHERE id_categoria = $sanitized_categoria_id $valor_ordenacion;";
+            $consulta = "SELECT T_Pelicula.id_pelicula, T_Pelicula.titulo, T_Pelicula.imagen, T_Pelicula.ano, 
+            T_Pelicula.duracion, T_Pelicula.sinopsis, T_Pelicula.votos, T_Pelicula.id_categoria FROM T_Pelicula 
+            WHERE id_categoria = $sanitized_categoria_id $valor_ordenacion;";
             $resultado = mysqli_query($conexion, $consulta);
 
             $peliculas = array();

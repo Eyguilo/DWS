@@ -11,17 +11,17 @@
         private $votos;
         private $id_categoria;
 
-        private function init($id_pelicula,$titulo,$imagen,$ano,$direccion,$duracion,$sinopsis,$votos, $id_categoria){
+        private function init($id_pelicula,$titulo,$imagen,$ano,$duracion,$sinopsis,$votos, $id_categoria,$direccion){
 
             $this->id_pelicula=$id_pelicula;
             $this->titulo=$titulo;
             $this->imagen=$imagen;  
-            $this->ano=$ano;
-            $this->direccion=$direccion;
+            $this->ano=$ano;            
             $this->duracion=$duracion;
             $this->sinopsis=$sinopsis;
             $this->votos=$votos;
             $this->id_categoria = $id_categoria;
+            $this->direccion=$direccion;
         }
 
         public function __construct(){
@@ -35,32 +35,38 @@
             }
             mysqli_select_db($conexion, 'cartelera');
             $sanitized_pelicula_id = mysqli_real_escape_string($conexion, $id_pelicula);
-            $consulta = "SELECT * FROM T_Pelicula 
-            INNER JOIN T_Pelicula_Reparto ON T_Pelicula.id_pelicula = T_Pelicula_Reparto.id_pelicula
-            INNER JOIN T_Reparto ON T_Pelicula_Reparto.id_reparto = T_Reparto.id_reparto
+            $consulta1 = "SELECT T_Pelicula.id_pelicula, T_Pelicula.titulo, T_Pelicula.imagen, T_Pelicula.ano, 
+            T_Pelicula.duracion, T_Pelicula.sinopsis, T_Pelicula.votos, T_Pelicula.id_categoria, T_Director.nombre_director FROM T_Pelicula 
             INNER JOIN T_Pelicula_Director ON T_Pelicula.id_pelicula = T_Pelicula_Director.id_pelicula
-            INNER JOIN T_Director ON T_Pelicula_Director.id_director = T_Director.id_director 
+            INNER JOIN T_Director ON T_Pelicula_Director.id_director = T_Director.id_director
             WHERE T_Pelicula.id_pelicula = $sanitized_pelicula_id;";
-            $resultado = mysqli_query($conexion, $consulta);
+            $resultado1 = mysqli_query($conexion, $consulta1);
 
+            $consulta2 = "SELECT T_Reparto.nombre_reparto FROM T_Pelicula 
+            INNER JOIN T_Pelicula_Reparto ON T_Pelicula.id_pelicula = T_Pelicula_Reparto.id_pelicula
+            INNER JOIN T_Reparto ON T_Pelicula_Reparto.id_reparto = T_Reparto.id_reparto 
+            WHERE T_Pelicula.id_pelicula = $sanitized_pelicula_id;";
+            $resultado2 = mysqli_query($conexion, $consulta2);
 
-            if(!$resultado){
-                $mensaje = 'Consulta inválida: '.mysqli_error($conexion)."\n";
-                $mensaje .= 'Consulta realitzada: '.$consulta;
+            $actor = "";
+            if(!$resultado1){
+                $mensaje = "<div class='cajaError'><p class='noResultado'>Consulta inválida: '".mysqli_error($conexion)."'\n','Consulta realizada: '".$consulta1."</p></div>";
                 die($mensaje);                 
             } else {
-                if(($resultado->num_rows) > 0){
-                    while($registro = mysqli_fetch_assoc($resultado)){
+                if(($resultado1->num_rows) > 0){
+                    while($registro = mysqli_fetch_assoc($resultado1)){
 
                         $ficha1 = new Ficha();
     
-                        $ficha1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'], $registro['nombre_director']
-                        ,$registro['duracion'], $registro['sinopsis'], $registro['votos'], $registro['id_categoria']);
+                        $ficha1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'],
+                        $registro['duracion'], $registro['sinopsis'], $registro['votos'], $registro['id_categoria'], $registro['nombre_director']);
+                    }
+                    while($registro = mysqli_fetch_assoc($resultado2)){
     
                         $actor = $actor.$registro['nombre_reparto'].", ";
                     }
                 } else{
-                    echo "<div class='cajaError'><p class='noResultado'>No se ha encontrado resultados sobre los actores y dirección.</p></div>";
+                    echo "<div class='cajaError'><p class='noResultado'>No se han encontrado datos sobre la película.</p></div>";
                 }
 
                 $actores = substr($actor, 0, -2);

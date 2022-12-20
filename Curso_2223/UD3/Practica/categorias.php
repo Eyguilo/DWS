@@ -22,7 +22,7 @@
         
 
         $categoria1 = new Categoria();
-        $categoria1->pintarCabezera();
+        $categoria1->pintar_cabezera();
         $categoria1->pintar();
 
         echo "</div>";

@@ -109,12 +109,11 @@
 .titulo_caja{
     color: white;
     text-align: center;
-    font-size: 100%;
+    font-size: 125%;
     width: 100%;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 .imagen_caja{
-    margin-top: 3%;
     height: 70%;
     width: 45%;
     margin-left: auto;
@@ -128,7 +127,6 @@ img{
 .duracion_caja{
     color: white;
     text-align: center;
-    margin-top: 1%;
     font-size: 125%;
     font-weight: bolder;
 }

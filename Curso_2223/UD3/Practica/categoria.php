@@ -22,7 +22,7 @@ d<?php
                 echo "Error al conectar MySQL: ".mysqli_connect_error();
             }
             mysqli_select_db($conexion, 'cartelera');
-            $consulta = "SELECT * FROM T_Categoria;";
+            $consulta = "SELECT id_categoria, nombre, imagen FROM T_Categoria;";
             $resultado = mysqli_query($conexion, $consulta);
 
             $contador = 0;
@@ -50,7 +50,7 @@ d<?php
             return $categorias;      
         }
 
-        function pintarCabezera(){
+        function pintar_cabezera(){
             echo "
                 <div class='contenedor'> 
                     <div class='caja_uno'><h1>Categorías</h1></div>";
