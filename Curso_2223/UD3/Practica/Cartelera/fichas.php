@@ -3,8 +3,8 @@
 <head>
     <?php
 
-        ini_set('display_errors',1);
-        ini_set('html_errors', 1 );
+        ini_set('display_errors',0);
+        ini_set('html_errors', 0 );
 
         require("ficha.php");
 
