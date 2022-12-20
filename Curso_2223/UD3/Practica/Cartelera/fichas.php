@@ -2,6 +2,10 @@
 <html lang='es'>
 <head>
     <?php
+
+        ini_set('display_errors',1);
+        ini_set('html_errors', 1 );
+
         require("ficha.php");
 
         $id_categoria = $_GET['id_categoria'];

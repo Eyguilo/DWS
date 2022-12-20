@@ -59,7 +59,8 @@
                         $contador++;
                     }
                 } else{
-                    echo "<div class='cajaError'><p class='noResultado'>No se han encontrado datos sobre las películas.</p></div>";
+                    $mensaje = "<div class='cajaError'><p class='noResultado'>No se han encontrado datos sobre la película.</p></div>";
+                    die($mensaje);
                 }
             }     
             return $peliculas;           

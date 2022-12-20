@@ -10,17 +10,17 @@
 <body>
     <?php
 
+        ini_set('display_errors',0);
+        ini_set('html_errors', 0);
+
         require("categoria.php");
-
-        echo "
         
-            <div class='lines'>
-                <div class='line'>::after</div>
-                <div class='line'>::after</div>
-                <div class='line'>::after</div>
-                ";
-        
-
+        echo "        
+        <div class='lines'>
+            <div class='line'>::after</div>
+            <div class='line'>::after</div>
+            <div class='line'>::after</div>
+            ";
         $categoria1 = new Categoria();
         $categoria1->pintar_cabezera();
         $categoria1->pintar();

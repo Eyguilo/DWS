@@ -49,24 +49,23 @@
             $resultado2 = mysqli_query($conexion, $consulta2);
 
             $actor = "";
+            $ficha1 = new Ficha();
+
             if(!$resultado1){
                 $mensaje = "<div class='cajaError'><p class='noResultado'>Consulta inválida: '".mysqli_error($conexion)."'\n','Consulta realizada: '".$consulta1."</p></div>";
                 die($mensaje);                 
             } else {
                 if(($resultado1->num_rows) > 0){
                     while($registro = mysqli_fetch_assoc($resultado1)){
-
-                        $ficha1 = new Ficha();
-    
                         $ficha1->init($registro['id_pelicula'], $registro['titulo'], $registro['imagen'], $registro['ano'],
                         $registro['duracion'], $registro['sinopsis'], $registro['votos'], $registro['id_categoria'], $registro['nombre_director']);
                     }
                     while($registro = mysqli_fetch_assoc($resultado2)){
-    
                         $actor = $actor.$registro['nombre_reparto'].", ";
                     }
                 } else{
-                    echo "<div class='cajaError'><p class='noResultado'>No se han encontrado datos sobre la película.</p></div>";
+                    $mensaje = "<div class='cajaError'><p class='noResultado'>No se han encontrado datos sobre la película.</p></div>";
+                    die($mensaje);
                 }
 
                 $actores = substr($actor, 0, -2);
