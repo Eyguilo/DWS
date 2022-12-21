@@ -10,15 +10,14 @@ if __name__ == "__main__":
     location_y = 50
     color = (135,88,146)
     exit = False
-    while not exit:
-        
+    while not exit:        
         for event in pygame.event.get():
-            print(event)
-
             if event.type == pygame.QUIT:
                 pygame.quit()
+
+        pygame.draw.rect(surface, (255,0,0), (400, 400, 50, 50))
             
-            #¿Se ha pulsado una tecla?
+            #¿Se ha pulsado una tecla? Primer juego en Python usando pygame (para principiantes)
             if event.type == pygame.key.get_pressed:
                 
                 if event.key == pygame.K_RIGHT:
