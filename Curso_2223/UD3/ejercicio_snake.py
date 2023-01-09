@@ -18,25 +18,14 @@ if __name__ == "__main__":
     while not exit:
 
         surface.blit(background, (0 ,0))
+        keys = pygame.key.get_pressed()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
             
-            if event.type == pygame.KEYDOWN:
-                
-                if event.key == pygame.K_RIGHT:
-                    print("Key RIGHT has been pressed")
-                    location_x+=1
-                if event.key == pygame.K_DOWN:
-                    print("Key DOWN has been pressed")
-                    location_y+=1
-                if event.key == pygame.K_UP:
-                    print("Key UP has been pressed")
-                    location_y-=1
-                if event.key == pygame.K_LEFT:
-                    print("Key LEFT has been pressed")
-                    location_x-=1
+        if keys[K_LEFT]:
+            
                 
         #Pintar
         surface.fill((173,216,230))
