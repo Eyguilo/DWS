@@ -1,24 +1,29 @@
 import pygame
 from pygame.locals import *
+base = 250
+altura = 250
+location_x = 50
+location_y = 50
+color = (135,88,146)
+exit = False
 
 if __name__ == "__main__":
-    pygame.init()
-    surface = pygame.display.set_mode((1000,500))
-    pygame.display.flip() 
 
-    location_x = 50
-    location_y = 50
-    color = (135,88,146)
-    exit = False
-    while not exit:        
+    pygame.init()
+    surface = pygame.display.set_mode((base, altura))
+    pygame.display.set_caption("Snaky")
+    background = pygame.image.load('Curso_2223/UD3/fondo_anime_2.jpg')
+    pygame.display.flip()
+
+    while not exit:
+
+        surface.blit(background, (0 ,0))
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-
-        pygame.draw.rect(surface, (255,0,0), (400, 400, 50, 50))
             
-            #¿Se ha pulsado una tecla? Primer juego en Python usando pygame (para principiantes)
-            if event.type == pygame.key.get_pressed:
+            if event.type == pygame.KEYDOWN:
                 
                 if event.key == pygame.K_RIGHT:
                     print("Key RIGHT has been pressed")
@@ -35,7 +40,7 @@ if __name__ == "__main__":
                 
         #Pintar
         surface.fill((173,216,230))
-        pygame.draw.rect(surface, color, pygame.Rect(location_x, location_y, 60, 60))
+        pygame.draw.rect(surface, color, pygame.Rect(location_x, location_y, 20, 20))
         pygame.display.flip()
 
 
