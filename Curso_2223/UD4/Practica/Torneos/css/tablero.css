@@ -1,0 +1,38 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.contenedor{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: inline;
+    background-color: mediumslateblue;
+    overflow-x: scroll;
+}
+.caja_1{
+    width: 100%;
+    height: 10%;
+    background-color: rgba(210, 105, 30, 0.664);
+}
+.caja_2{
+    width: 100%;;
+    height: 90%;
+}
+.col_1{
+    height: 100%;
+    width:4%;
+    float: left;
+}
+.col_2{
+    height: 100%;
+    width:20%;
+    background-color: rgba(0, 0, 0, 0.418);
+    float: left;
+}
+.jugador{
+    padding: 1%;
+    margin: 15.5%;
+    border: 2px solid black;
+    border-radius: 45px;
+}
