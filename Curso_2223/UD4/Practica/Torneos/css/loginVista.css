@@ -3,11 +3,9 @@
     padding: 0%;
 }
 body {
-    font-family: 'Overpass', sans-serif;
     font-weight: normal;
     font-size: 100%;
-    color: #1b262c;
-    
+    color: #1b262c;    
     margin: 0;
     background-color: #0f4c75;
 }
@@ -15,8 +13,7 @@ body {
 #contenedor {
     display: flex;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: center;    
     margin: 0;
     padding: 0;
     min-width: 100vw;
@@ -37,7 +34,7 @@ body {
     margin-bottom: 20px;
 }
 
-#login {
+#inicio {
     width: 100%;
     padding: 50px 30px;
     background-color: #3282b8;
@@ -53,39 +50,31 @@ body {
     box-sizing: border-box;
 }
 
-#login input {
-    font-family: 'Overpass', sans-serif;
+#inicio input {
     font-size: 110%;
-    color: #1b262c;
-    
+    color: #1b262c;    
     display: block;
     width: 100%;
-    height: 40px;
-    
+    height: 40px;    
     margin-bottom: 10px;
-    padding: 5px 5px 5px 10px;
-    
-    box-sizing: border-box;
-    
+    padding: 5px 5px 5px 10px;    
+    box-sizing: border-box;    
     border: none;
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
 }
 
-#login input::placeholder {
-    font-family: 'Overpass', sans-serif;
-    color: #E4E4E4;
+#inicio input::placeholder {
+    color: #264a58;
 }
 
-#login button {
-    font-family: 'Overpass', sans-serif;
+#inicio button {
     font-size: 110%;
     color:#1b262c;
     width: 100%;
     height: 40px;
-    border: none;
-    
+    border: none;    
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
@@ -95,25 +84,25 @@ body {
     margin-top: 10px;
 }
 
-#login button:hover {
+#inicio button:hover {
     background-color: #0f4c75;
     color:#bbe1fa;
 }
 
-.pie-form {
+.pie {
     font-size: 90%;
     text-align: center;    
     margin-top: 15px;
 }
 
-.pie-form a {
+.pie a {
     display: block;
     text-decoration: none;
     color: #bbe1fa;
     margin-bottom: 3px;
 }
 
-.pie-form a:hover {
+.pie a:hover {
     color: #0f4c75;
 }
 

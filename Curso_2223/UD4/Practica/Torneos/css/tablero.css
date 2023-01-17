@@ -6,7 +6,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: rgb(143, 199, 255);
+    background-color: #0f4c75;
 }
 .caja1 {
     width: 100%;
@@ -31,15 +31,15 @@ h1{
     text-align: center;
     padding-top: 1%;
     font-size: 300%;
-    color: burlywood;
-    -webkit-text-stroke: 3px black;
+    color:#bbe1fa;
+    -webkit-text-stroke: 0.5px black;
 }
 
 h2 {
     text-align: center;
     margin-top: 5%;
-    color: burlywood;
-    -webkit-text-stroke: 3px black;
+    color:#bbe1fa;
+    -webkit-text-stroke: 0.5px black;
 }
 .parejasC {
     margin-top: 15%;
