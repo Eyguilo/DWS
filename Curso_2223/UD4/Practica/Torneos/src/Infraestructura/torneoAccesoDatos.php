@@ -15,7 +15,7 @@
             }
 
             mysqli_select_db($conexion, 'torneos_tenis_mesa');
-            $consulta = mysqli_prepare($conexion, "SELECT T_Jugador.nombre FROM T_Jugador inner join T_Partidos on T_Partidos.ganador = T_Jugador.id_jugador;");
+            $consulta = mysqli_prepare($conexion, "SELECT T_Jugador.id_jugador, T_Jugador.nombre FROM T_Jugador;");
             $consulta->execute();
             $result = $consulta->get_result();
 
@@ -29,6 +29,3 @@
             return $torneos;
         }
     }
-    $foo = new TorneoAccesoDatos();
-
-    var_dump($foo->obtener());
