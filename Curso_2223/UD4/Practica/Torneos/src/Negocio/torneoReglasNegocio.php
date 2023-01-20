@@ -1,6 +1,6 @@
 <?php
     ini_set('display_errors', 'On');
-    ini_set('html_errors', 0);
+    ini_set('html_errors', 1);
 
     require("../Infraestructura/torneoAccesoDatos.php");
 
@@ -11,7 +11,7 @@
         function __construct() {
         }
 
-        function init($id) {
+        function init($id, $nombre) {
             $this->_ID = $id;
             $this->_NOMBRE = $nombre;
         }
@@ -30,8 +30,8 @@
             $listaTorneos =  array();
 
             foreach ($results as $torneo) {
-                $oTorneosReglasNegocio = new TorneosReglasNegocio();
-                $oTorneosReglasNegocio->init($torneo['T_Jugador.id_jugador'], $torneo['T_Jugador.nombre']);
+                $oTorneosReglasNegocio = new TorneoReglasNegocio();
+                $oTorneosReglasNegocio->init($torneo['id_jugador'], $torneo['nombre']);
                 array_push($listaTorneos,$oTorneosReglasNegocio);            
             }
             
