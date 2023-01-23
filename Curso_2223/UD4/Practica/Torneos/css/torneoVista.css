@@ -41,8 +41,8 @@ h2 {
     color:#bbe1fa;
     -webkit-text-stroke: 0.5px black;
 }
-.parejasC {
-    margin-top: 15%;
+.espacio {
+    margin-top: 50px;
 }
 /*.parejas_sf {
     margin-top: 10%;
@@ -57,8 +57,9 @@ h2 {
     text-align: center;
     background-color: antiquewhite;
     font-size: x-large;
-    margin: auto;
-    margin-bottom: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10  px;
     overflow: auto;
 }
 .jugadorSF {
