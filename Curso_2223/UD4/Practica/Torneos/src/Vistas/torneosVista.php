@@ -9,12 +9,20 @@
 </head>
 <body>
     <?php
+        session_start();
+        if (!isset($_SESSION['usuario']))
+        {
+            header("Location: login.php");
+        }
+    ?>
+
+    <?php
         require("../Negocio/torneosReglasNegocio.php");
         ini_set('display_errors', 'On');
         ini_set('html_errors', 1);
 
-        $torneosNombres = new TorneosReglasNegocio();
-        $datosTorneos = $torneosNombres->obtener();        
+        $torneosBL = new TorneosReglasNegocio();
+        $datosTorneos = $torneosBL->obtener();        
             
         echo "
             <div id='contenedor'>
