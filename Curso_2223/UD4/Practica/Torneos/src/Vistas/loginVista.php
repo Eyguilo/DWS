@@ -1,3 +1,23 @@
+<?php
+    require ("../Negocio/usuarioReglasNegocio.php");
+
+    if($_SERVER["REQUEST_METHOD"]=="POST") {
+        $usuarioBL = new UsuarioReglasNegocio();
+        $perfil =  $usuarioBL->verificar($_POST['usuario'],$_POST['clave']);
+
+        if($perfil==="Administrador") {
+            session_start();
+            $_SESSION['usuario'] = $_POST['usuario'];
+            header("Location: torneosVistaAdmin.php");
+        } elseif($perfil==="Jugador") {
+            session_start();
+            $_SESSION['usuario'] = $_POST['usuario'];
+            header("Location: torneosVistaJugador.php");
+        } else{
+            $error = true;
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,18 +32,16 @@
         <div id="central">
             <div id="inicio">
                 <div class="titulo">Bienvenido</div>
-                <form id="loginform">
-                    <input type="text" name="usuario" placeholder="Usuario" required>
-                    <input type="password" placeholder="Contraseña" name="password" required>
-                    <button type="submit" title="Ingresar" name="Ingresar">Iniciar</button>
-                </form>
-                <div class="pie">
-                    <a href="#">¿Perdiste tu contraseña?</a>
-                    <a href="#">¿No tienes cuenta? Regístrate</a>
-                </div>
-            </div>
-            <div class="inferior">
-                <a href="#">Volver</a>
+                <form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    <input id="usuario" name = "usuario" type = "text" placeholder="Usuario">
+                    <input id = "clave" name = "clave" type = "password" placeholder="Contraseña">
+                    <input type = "submit">
+                </form> 
+                <?php
+                    if(isset($error)) {
+                        print("<div class='pie'>No tienes acceso.</div>");
+                    }
+                ?>               
             </div>
         </div>
     </div>

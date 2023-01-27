@@ -11,7 +11,7 @@
     <?php
         session_start();
         if (!isset($_SESSION['usuario'])) {
-            header("Location: login.php");
+            header("Location: loginVista.php");
         }
     ?>
 
@@ -29,8 +29,8 @@
                     <div id='caja1'>
                     <p>Bienvenido: ".$_SESSION['usuario']."</p>
                     <a href='logOutVista.php'> Cerrar sesión </a>
-                        <p class='crear'>Crear torneo</p>
-                        <p class='crear'>Número de registros: ".count($datosTorneos)."</p>
+                        <a href='gestionTorneosVista.php' class='crear'>Crear torneo</a>
+                        <p class='resgistro'>Número de registros: ".count($datosTorneos)."</p>
                     </div>
                     <div id='caja2'>
                         <table class='default'>

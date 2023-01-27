@@ -9,4 +9,4 @@
         );
     }
     session_destroy();
-    header("Location: login.php");
+    header("Location: loginVista.php");
