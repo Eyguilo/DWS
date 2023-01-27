@@ -34,7 +34,6 @@
             echo "<div class='jugadorC'>".$torneo->getNombre()."</div>";
             $contador++;            
         }
-
         echo "</div>";
 
         echo"

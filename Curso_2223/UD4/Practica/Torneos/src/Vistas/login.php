@@ -2,19 +2,15 @@
 
 require ("../Negocio/usuarioReglasNegocio.php");
 
-if ($_SERVER["REQUEST_METHOD"]=="POST")
-{
+if($_SERVER["REQUEST_METHOD"]=="POST") {
     $usuarioBL = new UsuarioReglasNegocio();
     $perfil =  $usuarioBL->verificar($_POST['usuario'],$_POST['clave']);
 
-    if ($perfil==="administrador" || $perfil==="jugador")
-    {
+    if ($perfil==="Administrador" || $perfil==="Jugador") {
         session_start();
         $_SESSION['usuario'] = $_POST['usuario'];
         header("Location: torneosVista.php");
-    }
-    else
-    {
+    } else {
         $error = true;
     }
 }

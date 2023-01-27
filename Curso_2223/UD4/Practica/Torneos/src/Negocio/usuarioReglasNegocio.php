@@ -6,7 +6,7 @@
         }
         function verificar($usuario, $clave) {
             $usuariosDAL = new UsuarioAccesoDatos();
-            $res = $usuariosDAL->verificar($usuario,$clave);            
+            $res = $usuariosDAL->verificar($usuario,$clave);           
             return $res;            
         }
     }

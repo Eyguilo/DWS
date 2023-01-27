@@ -10,8 +10,7 @@
 <body>
     <?php
         session_start();
-        if (!isset($_SESSION['usuario']))
-        {
+        if (!isset($_SESSION['usuario'])) {
             header("Location: login.php");
         }
     ?>
@@ -28,6 +27,8 @@
             <div id='contenedor'>
                 <div id='central'>
                     <div id='caja1'>
+                    <p>Bienvenido: ".$_SESSION['usuario']."</p>
+                    <a href='logOutVista.php'> Cerrar sesión </a>
                         <p class='crear'>Crear torneo</p>
                         <p class='crear'>Número de registros: ".count($datosTorneos)."</p>
                     </div>
