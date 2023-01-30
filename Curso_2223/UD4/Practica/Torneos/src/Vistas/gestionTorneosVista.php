@@ -1,3 +1,12 @@
+<?php
+    require ("../Negocio/gestionTorneosReglasNegocio.php");
+
+    if($_SERVER["REQUEST_METHOD"]=="POST") {
+        $gestionBL = new GestionTorneosReglasNegocio();
+        $perfil =  $gestionBL->insertar($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
+        header("Location: torneosVistaAdmin.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,19 +22,16 @@
             <div id="inicio">
                 <div class="titulo">Creación de torneo</div>
                 <form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                    <input id="usuario" name = "usuario" type = "text" placeholder="Nombre">
+                    <input id="nombre" name = "nombre" type = "text" placeholder="Nombre">
                     <input id = "fecha" name = "fecha" type = "date">
                     <select name="estado" id="estado">
                         <option selected="true" disabled="disabled">Seleccione el estado del torneo</option>
-                        <option value="finalizado">Finalizado</option>
-                        <option value="enCurso">En curso</option>
+                        <option value="Finalizado">Finalizado</option>
+                        <option value="En curso">En curso</option>
+                    </select>
+                    <input type="text" name="ganador" id="ganador" placeholder="Nombre del ganador">
                     <input type = "submit">
-                </form> 
-                <?php
-                    if(isset($error)) {
-                        print("<div class='pie'>No tienes acceso.</div>");
-                    }
-                ?>               
+                </form>               
             </div>
         </div>
     </div>    
