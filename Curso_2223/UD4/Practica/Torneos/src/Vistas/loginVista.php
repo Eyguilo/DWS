@@ -35,7 +35,7 @@
                 <form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                     <input id="usuario" name = "usuario" type = "text" placeholder="Usuario">
                     <input id = "clave" name = "clave" type = "password" placeholder="Contraseña">
-                    <input type = "submit">
+                    <input id = "button" type = "submit">
                 </form> 
                 <?php
                     if(isset($error)) {

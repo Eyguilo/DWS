@@ -9,58 +9,70 @@
 </head>
 <body>
     <?php
+        ini_set('display_errors', 'On');
+        ini_set('html_errors', 1);
+
         session_start();
         if (!isset($_SESSION['usuario'])) {
             header("Location: loginVista.php");
         }
-    ?>
 
-    <?php
-        require("../Negocio/torneosReglasNegocio.php");
-        ini_set('display_errors', 'On');
-        ini_set('html_errors', 1);
+        require_once("../Negocio/torneosReglasNegocio.php");
+        require_once("../Negocio/gestionTorneosReglasNegocio.php");
 
         $torneosBL = new TorneosReglasNegocio();
-        $datosTorneos = $torneosBL->obtener();        
+        $datosTorneos = $torneosBL->obtener();
+        
+
             
         echo "
             <div id='contenedor'>
                 <div id='central'>
                     <div id='caja1'>
-                    <p>Bienvenido: ".$_SESSION['usuario']."</p>
-                    <a href='logOutVista.php'> Cerrar sesión </a>
-                        <a href='gestionTorneosVista.php' class='crear'>Crear torneo</a>
-                        <p class='resgistro'>Número de registros: ".count($datosTorneos)."</p>
+                        <div class='cerrar'><a href='logOutVista.php'> Cerrar sesión </a></div>                        
+                        <div class='bienvenido'><p>Bienvenido: ".$_SESSION['usuario']."</p></div>
+                        <div class='crear'><a href='gestionTorneosVista.php'>Crear torneo</a></div>                                              
+                        <div class='registro'><p>Número de registros: ".count($datosTorneos)."</p></div>
                     </div>
                     <div id='caja2'>
                         <table class='default'>
                             <caption>Torneos</caption>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Número de Jugadores</th>
-                                <th>Fecha</th>
-                                <th>Estado</th>
-                                <th>Campeón</th>
-                                <th></th>
-                                <th></th>
-                            </tr>";
-
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Número de Jugadores</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th>Campeón</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>";
         foreach ($datosTorneos as $torneos){
+            if($_SERVER["REQUEST_METHOD"]=="POST") {
+                $gestionBL = new GestionTorneosReglasNegocio();
+                $id_torneo =  $gestionBL->borrar($_POST['id_torneo']);
+                var_dump($id_torneo);
+            }
             echo "
-                            <tr>
-                                <td>".$torneos->getID()."</td>
-                                <td class='letras'>".$torneos->getNOMBRE()."</td>
-                                <td>".$torneos->getNUMJUGADORES()."</td>
-                                <td>".$torneos->getFECHA()."</td>
-                                <td class='letras'>".$torneos->getESTADO()."</td>
-                                <td class='letras'>".$torneos->getCAMPEON()."</td>
-                                <td>Editar</td>
-                                <td>Borrar</td>
-                            </tr>";
+                                <tr>
+                                    <td class='letras'>".$torneos->getID()."</td>
+                                    <td class='letras'>".$torneos->getNOMBRE()."</td>
+                                    <td class='letras'>".$torneos->getNUMJUGADORES()."</td>
+                                    <td class='letras'>".$torneos->getFECHA()."</td>
+                                    <td class='letras'>".$torneos->getESTADO()."</td>
+                                    <td class='letras'>".$torneos->getCAMPEON()."</td>
+                                    <td class='letras'>Editar</td>
+                                    <form method = 'POST' action = '".htmlspecialchars($_SERVER['PHP_SELF'])."'>
+                                    <input type = 'hidden' name='id_torneo' value='".$torneos->getID()."'>   
+                                    <td class='letras'><input id='boton' type = 'submit' value='Borrar'></td>
+                                    </form>
+                                </tr>";
         }
-
-        echo "          </table>
+        echo "              </tbody>
+                        </table>
                     </div>
                 </div>
             </div>";

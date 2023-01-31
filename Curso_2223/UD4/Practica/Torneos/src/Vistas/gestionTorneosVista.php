@@ -1,5 +1,6 @@
 <?php
     require ("../Negocio/gestionTorneosReglasNegocio.php");
+    session_start();
 
     if($_SERVER["REQUEST_METHOD"]=="POST") {
         $gestionBL = new GestionTorneosReglasNegocio();
@@ -31,7 +32,12 @@
                     </select>
                     <input type="text" name="ganador" id="ganador" placeholder="Nombre del ganador">
                     <input type = "submit">
-                </form>               
+                </form>
+                <?php
+                    if(isset($error)) {
+                        print("<div class='pie'>Completa los datos correctamente.</div>");
+                    }
+                ?>               
             </div>
         </div>
     </div>    

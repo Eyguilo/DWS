@@ -47,10 +47,10 @@
         foreach ($datosTorneos as $torneos){
             echo "
                             <tr>
-                                <td>".$torneos->getID()."</td>
+                                <td class='letras'>".$torneos->getID()."</td>
                                 <td class='letras'>".$torneos->getNOMBRE()."</td>
-                                <td>".$torneos->getNUMJUGADORES()."</td>
-                                <td>".$torneos->getFECHA()."</td>
+                                <td class='letras'>".$torneos->getNUMJUGADORES()."</td>
+                                <td class='letras'>".$torneos->getFECHA()."</td>
                                 <td class='letras'>".$torneos->getESTADO()."</td>
                                 <td class='letras'>".$torneos->getCAMPEON()."</td>
                             </tr>";

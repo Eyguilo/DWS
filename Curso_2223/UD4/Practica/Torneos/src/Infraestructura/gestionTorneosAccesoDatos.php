@@ -22,4 +22,18 @@
             
             return $res;
         }
+
+        function borrar($id_torneo) {
+            $conexion = mysqli_connect('localhost','root','1234');
+            if (mysqli_connect_errno()) {
+                echo "Error al conectar a MySQL: ". mysqli_connect_error();
+            }
+            
+            mysqli_select_db($conexion, 'torneos_tenis_mesa');
+            $consulta = mysqli_prepare($conexion, "DELETE FROM T_Torneo WHERE id_torneo = (?);");  
+            $consulta->bind_param("i", $id_torneo);
+            $res = $consulta->execute();
+            
+            return $res;
+        }
     }
