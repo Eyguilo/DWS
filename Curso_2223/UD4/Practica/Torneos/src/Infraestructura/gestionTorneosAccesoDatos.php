@@ -4,6 +4,7 @@
     ini_set('html_errors', 1);
 
     class GestionTorneosAccesoDatos {	
+
         function __construct() {
         }
 
@@ -35,5 +36,24 @@
             $res = $consulta->execute();
             
             return $res;
+        }
+
+        function crearPartido(){
+            $conexion = mysqli_connect('localhost','root','1234');
+            if (mysqli_connect_errno()) {
+                echo "Error al conectar a MySQL: ". mysqli_connect_error();
+            }
+            
+            mysqli_select_db($conexion, 'torneos_tenis_mesa');
+            $consulta = mysqli_prepare($conexion, "SELECT id_jugador, nombre FROM T_Jugador;");  
+            $consulta->execute();
+            $result = $consulta->get_result();
+            $jugadores =  array();
+
+            while ($myrow = $result->fetch_assoc()) {
+                array_push($jugadores, $myrow);
+            }
+
+            return $jugadores;            
         }
     }

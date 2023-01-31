@@ -22,9 +22,7 @@
 
         $torneosBL = new TorneosReglasNegocio();
         $datosTorneos = $torneosBL->obtener();
-        
-
-            
+                    
         echo "
             <div id='contenedor'>
                 <div id='central'>

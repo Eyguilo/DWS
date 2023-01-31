@@ -18,11 +18,9 @@
             $consulta = mysqli_prepare($conexion, "SELECT T_Jugador.id_jugador, T_Jugador.nombre FROM T_Jugador;");
             $consulta->execute();
             $result = $consulta->get_result();
-
             $torneos =  array();
 
             while ($myrow = $result->fetch_assoc()) {
-
                 array_push($torneos, $myrow);
             }
 

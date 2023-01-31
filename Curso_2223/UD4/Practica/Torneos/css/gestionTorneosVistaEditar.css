@@ -1,0 +1,120 @@
+*{
+    margin:0%;
+    padding: 0%;
+}
+#contenedor{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0f4c75;    
+}
+#caja2{
+    background-color: antiquewhite;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+}
+#caja1{
+    margin-bottom: 15px;
+}
+#central{
+    max-width: 1800px;
+    width: 100%;
+    background-color: #3282b8;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 200px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    padding-top: 15px;
+}
+caption{
+    font-size: 250%;
+    color: #002d46; 
+    margin-bottom: 20px;
+}
+th{
+    border-radius: 15px;
+    font-size: 120%;
+    color: #002d46;    
+    width: 300px;
+    height: 30px;   
+    margin-bottom: 10px;
+}
+td{
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.15);
+    height: 30px;
+    text-align: center;
+}
+tbody tr:nth-child(even){
+    background-color:#3d769c;
+}
+tbody tr:nth-child(odd){
+    background-color:#61c0ff;
+}
+
+#boton{
+    font-size: 100%;
+    color:#1b262c;
+    width: 80px;
+    height: 25px;
+    border: none;    
+    border-radius: 3px;   
+    background-color: #bbe1fa;   
+}
+#boton:hover {
+    background-color: #004370;
+    color:#bbe1fa;
+}
+a{
+    text-decoration: none;
+    font-size: 120%;
+    color:#1b262c;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: none;    
+    border-radius: 3px;   
+    background-color: #bbe1fa;
+    text-align: center;
+}
+a:hover{
+    background-color: #004370;
+    color:#bbe1fa;    
+}
+.crear{
+    text-align: right;
+}
+.cerrar{
+    text-align: right;
+}
+.bienvenido{
+    text-decoration: none;
+    max-width: fit-content;
+    font-size: 120%;
+    color:#1b262c;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: none;    
+    border-radius: 3px;   
+    background-color: #bbe1fa;
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+}
+.registro{
+    text-decoration: none;
+    font-size: 120%;
+    color:#1b262c;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: none;    
+    border-radius: 3px;   
+    background-color: #bbe1fa;
+    max-width: fit-content;
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    margin-top: 15px;
+}
