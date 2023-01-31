@@ -27,6 +27,7 @@
             <div id='contenedor'>
                 <div id='central'>
                     <div id='caja1'>
+                        <div class='cerrar'><a href='logOutVista.php'> Cerrar sesión </a></div>
                         <div class='bienvenido'><p>Bienvenido: ".$_SESSION['usuario']."</p></div>
                         <div class='registro'><p>Número de registros: ".count($datosTorneos)."</p></div>
                     </div>
