@@ -1,8 +1,6 @@
 <?php
     require_once('../Negocio/gestionTorneosReglasNegocio.php');
 
-    $idTorneo = $_GET['idTorneo'];
-
     session_start();
     if (!isset($_SESSION['usuario'])) {
         header("Location: loginVista.php");
@@ -10,7 +8,8 @@
 
     if($_SERVER['REQUEST_METHOD']=='POST') {
         $gestionBL = new GestionTorneosReglasNegocio();
-        $datosTorneo =  $gestionBL->insertar($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
+        $datosTorneo =  $gestionBL->insertarTorneo($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
+        $idTorneo = $gestionBL->obtenerId();
         $insetarPartido = $gestionBL->crearPartidoCuartos($idTorneo);
         header('Location: torneosVistaAdmin.php');
     }
@@ -59,6 +58,7 @@
             </div>";
     } else{
 
+        $idTorneo = $_GET['idTorneo'];
         echo "
             <div id='contenedor'>
                 <div id='central'>
@@ -87,7 +87,7 @@
         //foreach ($datosPartido as $partidos){
             echo "
                                 <tr>
-                                    <td class='letras'></td>
+                                    <td class='letras'>".$idTorneo."</td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'>Cuartos</td>

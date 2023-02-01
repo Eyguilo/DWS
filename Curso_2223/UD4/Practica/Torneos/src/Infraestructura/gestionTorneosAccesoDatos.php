@@ -8,7 +8,7 @@
         function __construct() {
         }
 
-        function insertar($nombre, $fecha, $estado, $ganador) {
+        function insertarTorneo($nombre, $fecha, $estado, $ganador) {
             $conexion = mysqli_connect('localhost','root','1234');
             if (mysqli_connect_errno()) {
                 echo "Error al conectar a MySQL: ". mysqli_connect_error();
@@ -22,6 +22,19 @@
             $res = $consulta->execute();
             
             return $res;
+        }
+
+        function obtenerId(){
+            $conexion = mysqli_connect('localhost','root','1234');
+            if (mysqli_connect_errno()) {
+                echo "Error al conectar a MySQL: ". mysqli_connect_error();
+            }
+            
+            mysqli_select_db($conexion, 'torneos_tenis_mesa');
+            $consulta = mysqli_prepare($conexion, "SELECT MAX(id_torneo) FROM T_Torneo;");  
+            $consulta->execute();
+            $idTorneo = $consulta->get_result();       
+            return $idTorneo;
         }
 
         function borrar($idTorneo) {
@@ -56,16 +69,21 @@
             return $jugadores;            
         }
 
-        function insertarPartidoCuartos($idTorneo, $fase, $idJugadorA, $idJugadorB){
+        function insertarPartidoCuartos($datosPartidosCuartos){
             $conexion = mysqli_connect('localhost','root','1234');
             if (mysqli_connect_errno()) {
                 echo "Error al conectar a MySQL: ". mysqli_connect_error();
             }
-            
+
             mysqli_select_db($conexion, 'torneos_tenis_mesa');
-            $consulta = mysqli_prepare($conexion, "INSERT INTO T_Partido (id_torneo, fase, id_jugador_a, id_jugador_b) VALUES (?,?,?,?)");  
-            $consulta->bind_param("isii", $idTorneo, $fase, $idJugadorA, $idJugadorB);
-            $res = $consulta->execute();
+            $consulta = mysqli_prepare($conexion, "INSERT INTO T_Partido (id_torneo, fase, id_jugador_a, id_jugador_b) VALUES (1,'Cuartos',3,4)");  
+                //$consulta->bind_param("isii", $datosPartidosCuartos[$i][0], $datosPartidosCuartos[$i][1], $datosPartidosCuartos[$i][2], $datosPartidosCuartos[$i][3]);
+                $res = $consulta->execute();
+            // for ($i=0; $i < 4; $i++) { 
+            //     $consulta = mysqli_prepare($conexion, "INSERT INTO T_Partido (id_torneo, fase, id_jugador_a, id_jugador_b) VALUES (1,'Cuartos',3,4)");  
+            //     //$consulta->bind_param("isii", $datosPartidosCuartos[$i][0], $datosPartidosCuartos[$i][1], $datosPartidosCuartos[$i][2], $datosPartidosCuartos[$i][3]);
+            //     $res = $consulta->execute();
+            // }
 
             return $res;   
         }

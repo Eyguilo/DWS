@@ -29,7 +29,7 @@
                     <div id='caja1'>
                         <div class='cerrar'><a href='logOutVista.php'> Cerrar sesión </a></div>                        
                         <div class='bienvenido'><p>Bienvenido: ".$_SESSION['usuario']."</p></div>
-                        <div class='crear'><a href='gestionTorneosVista.php?modo=crear'>Crear torneo</a></div>                                              
+                        <div class='crear'><a href='gestionTorneosVista.php?modo=crear&idTorneo=0'>Crear torneo</a></div>                                              
                         <div class='registro'><p>Número de registros: ".count($datosTorneos)."</p></div>
                     </div>
                     <div id='caja2'>
