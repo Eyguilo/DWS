@@ -35,7 +35,7 @@
             return $res;
         }
 
-        function crearPartido(){
+        function crearPartidoCuartos($idTorneo){
             $gestionDAL = new GestionTorneosAccesoDatos();
             $res = $gestionDAL->crearPartido();
             shuffle($res);
@@ -51,7 +51,11 @@
             for ($i=0; $i < 4; $i++) { 
                 $arrayPartidos[$i] = [$jugadorA = $res[$i*2], $jugadorB = $res[$i*2+1]];
             }
-            return $arrayPartidos;
+
+            $resultado = [$idTorneo, 'Cuartos', $arrayPartidos];
+
+
+            return $resultado;
         }
 
     }

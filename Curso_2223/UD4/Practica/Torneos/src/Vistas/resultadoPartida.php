@@ -9,6 +9,8 @@
 </head>
 <body>
     <?php
+        $idTorneo = $_GET['idTorneo'];
+
         echo "
             <div id='contenedor'>
                 <div id='central'>
@@ -25,7 +27,7 @@
                             <input type='text' name='ganador' id='ganador' placeholder='Nombre del ganador'>
                             <input class='boton' type = 'submit'>
                         </form>
-                        <a class='volver' href='torneosVistaAdmin.php'>Atrás</a>";                    
+                        <a class='volver' href='gestionTorneosVista.php?modo=editar&idTorneo=".$idTorneo."'>Atrás</a>";                    
                             if(isset($error)) {
                                 print('<div class="pie">Completa los datos correctamente.</div>');
                             }                                  

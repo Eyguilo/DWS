@@ -58,7 +58,7 @@
                                     <td class='letras'>".$torneos->getESTADO()."</td>
                                     <td class='letras'>".$torneos->getCAMPEON()."</td>
                                     <td><a class='editar' href='gestionTorneosVista.php?modo=editar&idTorneo=".$torneos->getID()."'>Editar</a></td>
-                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php?idTorneo=".$torneos->getID()."'>Borra</a></td>
+                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php?idTorneo=".$torneos->getID()."'>Borrar</a></td>
                                 </tr>";
         }
         echo "              </tbody>
