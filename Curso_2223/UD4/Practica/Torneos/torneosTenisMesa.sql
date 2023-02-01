@@ -27,7 +27,7 @@ CREATE TABLE T_Jugador (
 CREATE TABLE T_Partidos (
     id_partido int(5) PRIMARY KEY  auto_increment,
     id_torneo int(5) not NULL,
-    fase enum('cuartos', 'Semifinales', 'Final'),
+    fase VARCHAR(100) NOT NULL,
     id_jugador_a int(5) not null,
     id_jugador_b int(5) NOT NULL,
     ganador int(5) not null,

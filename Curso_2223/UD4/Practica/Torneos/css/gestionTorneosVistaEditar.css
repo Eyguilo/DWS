@@ -58,7 +58,6 @@ tbody tr:nth-child(even){
 tbody tr:nth-child(odd){
     background-color:#61c0ff;
 }
-
 #boton{
     font-size: 100%;
     color:#1b262c;
@@ -82,15 +81,20 @@ a{
     border-radius: 3px;   
     background-color: #bbe1fa;
     text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 a:hover{
     background-color: #004370;
     color:#bbe1fa;    
 }
-.crear{
+.volver{
     text-align: right;
 }
 .cerrar{
+    text-align: right;
+}
+.crear{
     text-align: right;
 }
 .bienvenido{
@@ -103,7 +107,8 @@ a:hover{
     border: none;    
     border-radius: 3px;   
     background-color: #bbe1fa;
-    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 .registro{
     text-decoration: none;
@@ -115,6 +120,6 @@ a:hover{
     border-radius: 3px;   
     background-color: #bbe1fa;
     max-width: fit-content;
-    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    margin-top: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }

@@ -1,10 +1,14 @@
 <?php
-    require ('../Negocio/gestionTorneosReglasNegocio.php');
+    require_once('../Negocio/gestionTorneosReglasNegocio.php');
     session_start();
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: loginVista.php");
+    }
 
     if($_SERVER['REQUEST_METHOD']=='POST') {
         $gestionBL = new GestionTorneosReglasNegocio();
-        $perfil =  $gestionBL->insertar($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
+        $datosTorneo =  $gestionBL->insertar($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
+        $insetarPartido = $gestionBL->crearPartido();
         header('Location: torneosVistaAdmin.php');
     }
 ?>
@@ -41,8 +45,9 @@
                                 <option value='En curso'>En curso</option>
                             </select>
                             <input type='text' name='ganador' id='ganador' placeholder='Nombre del ganador'>
-                            <input type = 'submit'>
-                        </form>";                    
+                            <input class='boton' type = 'submit'>
+                        </form>
+                        <a class='volver' href='torneosVistaAdmin.php'>Atrás</a>";                    
                             if(isset($error)) {
                                 print('<div class="pie">Completa los datos correctamente.</div>');
                             }                                  
@@ -50,18 +55,19 @@
                 </div>
             </div>";
     } else{
-        require_once("../Negocio/gestionTorneosReglasNegocio.php");
-
         $gestionBL = new GestionTorneosReglasNegocio();
         $datosPartido = $gestionBL->crearPartido();
+        $idTorneo = $_GET['idTorneo'];
         echo "
             <div id='contenedor'>
                 <div id='central'>
                     <div id='caja1'>
-                        <div class='cerrar'><a href='logOutVista.php'> Cerrar sesión </a></div>                        
+                        <div class='cerrar'><a href='logOutVista.php'>Cerrar sesión</a></div>                        
                         <div class='bienvenido'><p>Bienvenido: ".$_SESSION['usuario']."</p></div>
+                        <div class='volver'><a href='torneosVistaAdmin.php'>Volver</a></div>
                         <div class='registro'><p>Número de registros: ".count($datosPartido)."</p></div>
-                    </div>
+                        <div class='crear'><a href='resultadoPartida.php'>Nueva partida</a></div>
+                        </div>
                     <div id='caja2'>
                         <table class='default'>
                             <caption>Torneos de Tenis de Mesa</caption>
@@ -72,23 +78,51 @@
                                     <th>Jugador B</th>
                                     <th>Ronda</th>
                                     <th>Ganador</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>";
         foreach ($datosPartido as $partidos){
-            var_dump($datosPartido);
-            var_dump($partidos);
-            $cont=0;
             echo "
                                 <tr>
+                                    <td class='letras'>$idTorneo</td>
+                                    <td class='letras'>".$partidos[0]['nombre']."</td>
+                                    <td class='letras'>".$partidos[1]['nombre']."</td>
+                                    <td class='letras'>Cuartos</td>
                                     <td class='letras'></td>
-                                    <td class='letras'>".$partidos[$cont]->getNOMBRE()."</td>
-                                    <td class='letras'>".$partidos[$cont + 1]->getNOMBRE()."</td>
-                                    <td class='letras'></td>
-                                    <td class='letras'></td>
+                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
+                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borra</a></td>
                                 </tr>";
-            $cont++;
         }
+        echo "
+                                <tr>
+                                    <td class='letras'>$idTorneo</td>
+                                    <td class='letras'></td>
+                                    <td class='letras'></td>
+                                    <td class='letras'>Semifinales</td>
+                                    <td class='letras'></td>
+                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
+                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borra</a></td>
+                                </tr>
+                                <tr>
+                                    <td class='letras'>$idTorneo</td>
+                                    <td class='letras'></td>
+                                    <td class='letras'></td>
+                                    <td class='letras'>Semifinales</td>
+                                    <td class='letras'></td>
+                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
+                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borra</a></td>
+                                </tr>
+                                <tr>
+                                    <td class='letras'>$idTorneo</td>
+                                    <td class='letras'></td>
+                                    <td class='letras'></td>
+                                    <td class='letras'>Final</td>
+                                    <td class='letras'></td>
+                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
+                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borra</a></td>
+                                </tr>";
         echo "              </tbody>
                         </table>
                     </div>

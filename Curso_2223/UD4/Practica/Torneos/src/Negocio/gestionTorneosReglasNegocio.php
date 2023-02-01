@@ -29,9 +29,9 @@
             return $res;            
         }
 
-        function borrar($id_torneo){            
+        function borrar($idTorneo){            
             $gestionDAL = new GestionTorneosAccesoDatos();
-            $res = $gestionDAL->borrar($id_torneo);           
+            $res = $gestionDAL->borrar($idTorneo);           
             return $res;
         }
 
@@ -46,13 +46,11 @@
                 $oGestionReglasNegocio = new GestionTorneosReglasNegocio();
                 $oGestionReglasNegocio->init($jugador['id_jugador'], $jugador['nombre']);
                 array_push($listaJugadores,$oGestionReglasNegocio);
-                var_dump($oGestionReglasNegocio->getNombre());            
             }
 
             for ($i=0; $i < 4; $i++) { 
                 $arrayPartidos[$i] = [$jugadorA = $res[$i*2], $jugadorB = $res[$i*2+1]];
             }
-            var_dump($arrayPartidos);
             return $arrayPartidos;
         }
 

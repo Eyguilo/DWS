@@ -49,11 +49,6 @@
                             </thead>
                             <tbody>";
         foreach ($datosTorneos as $torneos){
-            if($_SERVER["REQUEST_METHOD"]=="POST") {
-                $gestionBL = new GestionTorneosReglasNegocio();
-                $id_torneo =  $gestionBL->borrar($_POST['id_torneo']);
-                var_dump($id_torneo);
-            }
             echo "
                                 <tr>
                                     <td class='letras'>".$torneos->getID()."</td>
@@ -62,11 +57,8 @@
                                     <td class='letras'>".$torneos->getFECHA()."</td>
                                     <td class='letras'>".$torneos->getESTADO()."</td>
                                     <td class='letras'>".$torneos->getCAMPEON()."</td>
-                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
-                                    <form method = 'POST' action = '".htmlspecialchars($_SERVER['PHP_SELF'])."'>
-                                    <input type = 'hidden' name='id_torneo' value='".$torneos->getID()."'>   
-                                    <td class='letras'><input id='boton' type = 'submit' value='Borrar'></td>
-                                    </form>
+                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar&idTorneo=".$torneos->getID()."'>Editar</a></td>
+                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php?idTorneo=".$torneos->getID()."'>Borra</a></td>
                                 </tr>";
         }
         echo "              </tbody>

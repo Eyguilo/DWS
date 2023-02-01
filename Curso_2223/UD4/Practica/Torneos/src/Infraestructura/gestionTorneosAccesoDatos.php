@@ -24,7 +24,7 @@
             return $res;
         }
 
-        function borrar($id_torneo) {
+        function borrar($idTorneo) {
             $conexion = mysqli_connect('localhost','root','1234');
             if (mysqli_connect_errno()) {
                 echo "Error al conectar a MySQL: ". mysqli_connect_error();
@@ -32,7 +32,7 @@
             
             mysqli_select_db($conexion, 'torneos_tenis_mesa');
             $consulta = mysqli_prepare($conexion, "DELETE FROM T_Torneo WHERE id_torneo = (?);");  
-            $consulta->bind_param("i", $id_torneo);
+            $consulta->bind_param("i", $idTorneo);
             $res = $consulta->execute();
             
             return $res;
@@ -53,7 +53,20 @@
             while ($myrow = $result->fetch_assoc()) {
                 array_push($jugadores, $myrow);
             }
-
             return $jugadores;            
+        }
+
+        function insertarPartido($idTorneo, $fase, $idJugadorA, $idJugadorB, $idGanador){
+            $conexion = mysqli_connect('localhost','root','1234');
+            if (mysqli_connect_errno()) {
+                echo "Error al conectar a MySQL: ". mysqli_connect_error();
+            }
+            
+            mysqli_select_db($conexion, 'torneos_tenis_mesa');
+            $consulta = mysqli_prepare($conexion, "INSERT INTO T_Partido (id_torneo, fase, id_jugador_a, id_jugador_b, ganador) VALUES (?,?,?,?,?)");  
+            $consulta->bind_param("isiii", $idTorneo, $fase, $idJugadorA, $idJugadorB, $idGanador);
+            $res = $consulta->execute();
+
+            return $res;   
         }
     }

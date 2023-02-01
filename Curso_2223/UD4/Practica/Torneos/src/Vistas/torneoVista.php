@@ -10,6 +10,10 @@
 <body>
 
     <?php
+        session_start();
+        if (!isset($_SESSION['usuario'])) {
+            header("Location: loginVista.php");
+        }
         require("../Negocio/torneoReglasNegocio.php");
         ini_set('display_errors', 'On');
         ini_set('html_errors', 1);

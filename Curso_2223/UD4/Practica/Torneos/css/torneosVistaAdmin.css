@@ -82,6 +82,8 @@ a{
     border-radius: 3px;   
     background-color: #bbe1fa;
     text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 a:hover{
     background-color: #004370;
@@ -104,6 +106,8 @@ a:hover{
     border-radius: 3px;   
     background-color: #bbe1fa;
     box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 .registro{
     text-decoration: none;
@@ -116,4 +120,6 @@ a:hover{
     background-color: #bbe1fa;
     max-width: fit-content;
     box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
