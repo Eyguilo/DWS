@@ -18,49 +18,31 @@
             return $this->_ID;
         }
 
+        function obtenerUltimoIdTorneo() {
+            $gestionDAL = new GestionTorneosAccesoDatos();
+            $res = $gestionDAL->obtenerUltimoIdTorneo();
+            return $res;            
+        }
+
         function insertarTorneo($nombre, $fecha, $estado, $ganador) {
             $gestionDAL = new GestionTorneosAccesoDatos();
             $res = $gestionDAL->insertarTorneo($nombre,$fecha, $estado, $ganador);           
             return $res;            
         }
 
-        function obtenerId() {
+        function jugadores(){
             $gestionDAL = new GestionTorneosAccesoDatos();
-            $res = $gestionDAL->obtenerId();
-            return $res;            
-        }
-
-        function borrar($idTorneo){            
-            $gestionDAL = new GestionTorneosAccesoDatos();
-            $res = $gestionDAL->borrar($idTorneo);           
-            return $res;
-        }
-
-        function crearPartidoCuartos($idTorneo){
-            $gestionDAL = new GestionTorneosAccesoDatos();
-            $res = $gestionDAL->crearPartido();
+            $res = $gestionDAL->jugadores();
             shuffle($res);
-            $arrayPartidos = [];
-            $listaJugadores =  array();
 
-            foreach ($res as $jugador) {
-                $oGestionReglasNegocio = new GestionTorneosReglasNegocio();
-                $oGestionReglasNegocio->init($jugador['id_jugador']);
-                array_push($listaJugadores,$oGestionReglasNegocio);
-            }
-
-            for ($i=0; $i < 8; $i++) { 
-                $arrayPartidos[$i] = $listaJugadores[$i];
-            }
-
-            $res1 = [$idTorneo, 'Cuartos', $arrayPartidos[0], $arrayPartidos[1]];
-            $res2 = [$idTorneo, 'Cuartos', $arrayPartidos[2], $arrayPartidos[3]];
-            $res3 = [$idTorneo, 'Cuartos', $arrayPartidos[4], $arrayPartidos[5]];
-            $res4 = [$idTorneo, 'Cuartos', $arrayPartidos[6], $arrayPartidos[7]];
-            
+            $res1 = ['Cuartos', $res[0], $res[1]];
+            $res2 = ['Cuartos', $res[2], $res[3]];
+            $res3 = ['Cuartos', $res[4], $res[5]];
+            $res4 = ['Cuartos', $res[6], $res[7]];            
             $result = [$res1, $res2, $res3, $res4];
-            $resultFinal = $gestionDAL->insertarPartidoCuartos($result);
 
-            return $resultadoFinal;
+            $insertarPartidosCuartos = $gestionDAL->insertarPartidosCuartos($result);
+
+            return $insertarPartidosCuartos;
         }
     }

@@ -16,11 +16,11 @@
         
         $idTorneo = $_GET['idTorneo'];
 
-        require_once("../Negocio/gestionTorneosReglasNegocio.php");
+        require_once("../Negocio/torneosReglasNegocio.php");
 
         if($_SERVER["REQUEST_METHOD"]=="POST") {
-            $gestionBL = new GestionTorneosReglasNegocio();
-            $id =  $gestionBL->borrar($_POST['idTorneo']);
+            $torneosBL = new TorneosReglasNegocio();
+            $id =  $torneosBL->borrarTorneo($_POST['idTorneo']);
             header('Location: torneosVistaAdmin.php');
         }
 
@@ -33,10 +33,7 @@
                             <input type = 'hidden' name = 'idTorneo' value='".$idTorneo."'>
                             <input type = 'submit' value='Borrar'>
                         </form>
-                        <a href='torneosVistaAdmin.php'>No borrar</a>";
-                            if(isset($error)) {
-                                print('<div class="pie">Completa los datos correctamente.</div>');
-                            }                                  
+                        <a href='torneosVistaAdmin.php'>No borrar</a>";                                
         echo "      </div>
                 </div>
             </div>";

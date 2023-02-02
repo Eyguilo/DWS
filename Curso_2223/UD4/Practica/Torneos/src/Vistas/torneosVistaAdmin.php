@@ -1,3 +1,18 @@
+<?php
+    require_once('../Negocio/torneosReglasNegocio.php');
+    require_once('../Negocio/GestionTorneosReglasNegocio.php');
+
+    session_start();
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: loginVista.php");
+    }
+    
+    if($_SERVER['REQUEST_METHOD']=='POST') {
+        $gestionBL = new GestionTorneosReglasNegocio();
+        //$datosTorneo =  $gestionBL->insertarTorneo($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
+        //$insertarPartidosCuartos = $gestionBL->jugadores();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +27,10 @@
         ini_set('display_errors', 'On');
         ini_set('html_errors', 1);
 
-        session_start();
-        if (!isset($_SESSION['usuario'])) {
-            header("Location: loginVista.php");
-        }
-
         require_once("../Negocio/torneosReglasNegocio.php");
-        require_once("../Negocio/gestionTorneosReglasNegocio.php");
 
         $torneosBL = new TorneosReglasNegocio();
-        $datosTorneos = $torneosBL->obtener();
+        $datosTorneos = $torneosBL->obtenerTorneos();
                     
         echo "
             <div id='contenedor'>

@@ -43,18 +43,22 @@
             return $this->_CAMPEON;
         }
 
-        function obtener() {
+        function obtenerTorneos() {
             $torneosDAL = new TorneosAccesoDatos();
-            $results = $torneosDAL->obtener();
-
+            $results = $torneosDAL->obtenerTorneos();
             $listaTorneos =  array();
 
             foreach ($results as $torneos) {
                 $oTorneosReglasNegocio = new TorneosReglasNegocio();
                 $oTorneosReglasNegocio->init($torneos['id_torneo'], $torneos['nombre'], $torneos['num_jugadores'], $torneos['fecha'], $torneos['estado'], $torneos['campeon']);
                 array_push($listaTorneos,$oTorneosReglasNegocio);            
-            }
-            
+            }            
             return $listaTorneos;
+        }
+
+        function borrarTorneo($idTorneo){            
+            $torneosDAL = new TorneosAccesoDatos();
+            $res = $torneosDAL->borrarTorneo($idTorneo);           
+            return $res;
         }
     }

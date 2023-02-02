@@ -5,12 +5,10 @@
     if (!isset($_SESSION['usuario'])) {
         header("Location: loginVista.php");
     }
-
+    
     if($_SERVER['REQUEST_METHOD']=='POST') {
         $gestionBL = new GestionTorneosReglasNegocio();
         $datosTorneo =  $gestionBL->insertarTorneo($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
-        $idTorneo = $gestionBL->obtenerId();
-        $insetarPartido = $gestionBL->crearPartidoCuartos($idTorneo);
         header('Location: torneosVistaAdmin.php');
     }
 ?>
@@ -67,7 +65,7 @@
                         <div class='bienvenido'><p>Bienvenido: ".$_SESSION['usuario']."</p></div>
                         <div class='volver'><a href='torneosVistaAdmin.php'>Volver</a></div>
                         <div class='registro'><p>Número de registros: </p></div>
-                        <div class='crear'><a href='resultadoPartida.php?idTorneo=".$idTorneo."'>Nueva partida</a></div>
+                        <div class='crear'><a href='resultadoPartidaVista.php?idTorneo=".$idTorneo."'>Nueva partida</a></div>
                         </div>
                     <div id='caja2'>
                         <table class='default'>
@@ -75,6 +73,7 @@
                             <thead>
                                 <tr>
                                     <th>ID del Torneo</th>
+                                    <th>ID de la Partida</th>
                                     <th>Jugador A</th>
                                     <th>Jugador B</th>
                                     <th>Ronda</th>
@@ -84,10 +83,11 @@
                                 </tr>
                             </thead>
                             <tbody>";
-        //foreach ($datosPartido as $partidos){
+        //foreach ($datosPartido as $partidos)s{
             echo "
                                 <tr>
                                     <td class='letras'>".$idTorneo."</td>
+                                    <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'>Cuartos</td>
@@ -101,14 +101,6 @@
                                     <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
-                                    <td class='letras'>Semifinales</td>
-                                    <td class='letras'></td>
-                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
-                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
-                                </tr>
-                                <tr>
-                                    <td class='letras'></td>
-                                    <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'>Semifinales</td>
                                     <td class='letras'></td>
@@ -116,6 +108,17 @@
                                     <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
                                 </tr>
                                 <tr>
+                                    <td class='letras'></td>
+                                    <td class='letras'></td>
+                                    <td class='letras'></td>
+                                    <td class='letras'></td>
+                                    <td class='letras'>Semifinales</td>
+                                    <td class='letras'></td>
+                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
+                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
+                                </tr>
+                                <tr>
+                                    <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
