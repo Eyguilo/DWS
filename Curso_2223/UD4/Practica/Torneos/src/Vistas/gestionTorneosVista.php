@@ -55,8 +55,9 @@
                 </div>
             </div>";
     } else{
-
         $idTorneo = $_GET['idTorneo'];
+        $gestionBL = new GestionTorneosReglasNegocio();
+        $datosPartidos =  $gestionBL->seleccionarPartidos($idTorneo);
         echo "
             <div id='contenedor'>
                 <div id='central'>
@@ -73,7 +74,6 @@
                             <thead>
                                 <tr>
                                     <th>ID del Torneo</th>
-                                    <th>ID de la Partida</th>
                                     <th>Jugador A</th>
                                     <th>Jugador B</th>
                                     <th>Ronda</th>
@@ -83,11 +83,10 @@
                                 </tr>
                             </thead>
                             <tbody>";
-        //foreach ($datosPartido as $partidos)s{
+        foreach ($datosPartidos as $partidos){
             echo "
                                 <tr>
                                     <td class='letras'>".$idTorneo."</td>
-                                    <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'>Cuartos</td>
@@ -95,13 +94,12 @@
                                     <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
                                     <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
                                 </tr>";
-        //}
+        }
         echo "
                                 <tr>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
-                                    <td class='letras'></td>
                                     <td class='letras'>Semifinales</td>
                                     <td class='letras'></td>
                                     <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
@@ -111,14 +109,12 @@
                                     <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
-                                    <td class='letras'></td>
                                     <td class='letras'>Semifinales</td>
                                     <td class='letras'></td>
                                     <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
                                     <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
                                 </tr>
                                 <tr>
-                                    <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>
                                     <td class='letras'></td>

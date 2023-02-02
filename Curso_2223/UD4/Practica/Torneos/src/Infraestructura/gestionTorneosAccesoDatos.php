@@ -22,19 +22,19 @@
             return $res;
         }
 
-        function obtenerUltimoIdTorneo(){
-            $conexion = mysqli_connect('localhost','root','1234');
-            if (mysqli_connect_errno()) {
-                echo "Error al conectar a MySQL: ". mysqli_connect_error();
-            }
+        // function obtenerUltimoIdTorneo(){
+        //     $conexion = mysqli_connect('localhost','root','1234');
+        //     if (mysqli_connect_errno()) {
+        //         echo "Error al conectar a MySQL: ". mysqli_connect_error();
+        //     }
             
-            mysqli_select_db($conexion, 'torneos_tenis_mesa');
-            $consulta = mysqli_prepare($conexion, "SELECT MAX(id_torneo) FROM T_Torneo;");  
-            $consulta->execute();
-            $idTorneo = $consulta->get_result();
-            var_dump($idTorneo);
-            return $idTorneo;
-        }
+        //     mysqli_select_db($conexion, 'torneos_tenis_mesa');
+        //     $consulta = mysqli_prepare($conexion, "SELECT MAX(id_torneo) FROM T_Torneo;");  
+        //     $consulta->execute();
+        //     $idTorneo = $consulta->get_result();
+        //     var_dump($idTorneo);
+        //     return $idTorneo;
+        // }
 
         function insertarPartidosCuartos($partidos){
             $conexion = mysqli_connect('localhost','root','1234');
@@ -65,5 +65,19 @@
             $consulta->execute();
             $res = $consulta->get_result();            
             return $res;
+        }
+
+        function seleccin(){
+            $conexion = mysqli_connect('localhost','root','1234');
+            if (mysqli_connect_errno()) {
+                echo "Error al conectar a MySQL: ". mysqli_connect_error();
+            }
+            
+            mysqli_select_db($conexion, 'torneos_tenis_mesa');
+            $consulta = mysqli_prepare($conexion, "SELECT MAX(id_torneo) FROM T_Torneo;");  
+            $consulta->execute();
+            $idTorneo = $consulta->get_result();
+            var_dump($idTorneo);
+            return $idTorneo;
         }
     }

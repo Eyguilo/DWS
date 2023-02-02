@@ -5,17 +5,8 @@
     require("../Infraestructura/gestionTorneosAccesoDatos.php");
     
     class GestionTorneosReglasNegocio {
-        private $_ID;
-
+        
         function __construct() {
-        }
-
-        function init($id) {
-            $this->_ID = $id;
-        }
-
-        function getID() {
-            return $this->_ID;
         }
 
         function obtenerUltimoIdTorneo() {
@@ -44,5 +35,11 @@
             $insertarPartidosCuartos = $gestionDAL->insertarPartidosCuartos($result);
 
             return $insertarPartidosCuartos;
+        }
+
+        function seleccionarPartidos($idTorneo){
+            $gestionDAL = new GestionTorneosAccesoDatos();
+            $res = $gestionDAL->seleccionarPartidos($idTorneo);
+            return $res;          
         }
     }

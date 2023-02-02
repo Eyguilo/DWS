@@ -9,10 +9,15 @@
 </head>
 <body>
     <?php
+
         session_start();
         if (!isset($_SESSION['usuario'])) {
             header("Location: loginVista.php");
         }
+
+        require_once('../Negocio/resultadoPartidaReglasNegocio.php');
+        $foo = new ResultadoPartidaReglasNegocio();
+        $u = $foo->idTorneoCrearPartida();
 
         echo "
             <div id='contenedor'>

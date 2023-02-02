@@ -1,6 +1,6 @@
 <?php
     require_once('../Negocio/torneosReglasNegocio.php');
-    require_once('../Negocio/GestionTorneosReglasNegocio.php');
+    require_once('../Negocio/gestionTorneosReglasNegocio.php');
 
     session_start();
     if (!isset($_SESSION['usuario'])) {
