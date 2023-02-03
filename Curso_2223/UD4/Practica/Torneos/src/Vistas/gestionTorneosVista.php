@@ -9,6 +9,9 @@
     if($_SERVER['REQUEST_METHOD']=='POST') {
         $gestionBL = new GestionTorneosReglasNegocio();
         $datosTorneo =  $gestionBL->insertarTorneo($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
+        $idUltimo = $gestionBL->obtenerUltimoIdTorneo();
+
+        $insertarPartidosCuartos = $gestionBL->insertarPartidosCuartos($idUltimo[0][0]);
         header('Location: torneosVistaAdmin.php');
     }
 ?>
@@ -56,8 +59,8 @@
             </div>";
     } else{
         $idTorneo = $_GET['idTorneo'];
-        $gestionBL = new GestionTorneosReglasNegocio();
-        $datosPartidos =  $gestionBL->seleccionarPartidos($idTorneo);
+        $gestionBL1 = new GestionTorneosReglasNegocio();
+        $datosPartidos =  $gestionBL1->seleccionarPartidos($idTorneo);
         echo "
             <div id='contenedor'>
                 <div id='central'>
@@ -65,7 +68,7 @@
                         <div class='cerrar'><a href='logOutVista.php'>Cerrar sesión</a></div>                        
                         <div class='bienvenido'><p>Bienvenido: ".$_SESSION['usuario']."</p></div>
                         <div class='volver'><a href='torneosVistaAdmin.php'>Volver</a></div>
-                        <div class='registro'><p>Número de registros: </p></div>
+                        <div class='registro'><p>Número de registros: ".count($datosPartidos)."</p></div>
                         <div class='crear'><a href='resultadoPartidaVista.php?idTorneo=".$idTorneo."'>Nueva partida</a></div>
                         </div>
                     <div id='caja2'>
@@ -87,42 +90,14 @@
             echo "
                                 <tr>
                                     <td class='letras'>".$idTorneo."</td>
-                                    <td class='letras'></td>
-                                    <td class='letras'></td>
-                                    <td class='letras'>Cuartos</td>
-                                    <td class='letras'></td>
+                                    <td class='letras'>".$partidos[1]."</td>
+                                    <td class='letras'>".$partidos[2]."</td>
+                                    <td class='letras'>".$partidos[0]."</td>
+                                    <td class='letras'>".$partidos[3]."</td>
                                     <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
                                     <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
                                 </tr>";
         }
-        echo "
-                                <tr>
-                                    <td class='letras'></td>
-                                    <td class='letras'></td>
-                                    <td class='letras'></td>
-                                    <td class='letras'>Semifinales</td>
-                                    <td class='letras'></td>
-                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
-                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
-                                </tr>
-                                <tr>
-                                    <td class='letras'></td>
-                                    <td class='letras'></td>
-                                    <td class='letras'></td>
-                                    <td class='letras'>Semifinales</td>
-                                    <td class='letras'></td>
-                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
-                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
-                                </tr>
-                                <tr>
-                                    <td class='letras'></td>
-                                    <td class='letras'></td>
-                                    <td class='letras'></td>
-                                    <td class='letras'>Final</td>
-                                    <td class='letras'></td>
-                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
-                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
-                                </tr>";
         echo "              </tbody>
                         </table>
                     </div>
