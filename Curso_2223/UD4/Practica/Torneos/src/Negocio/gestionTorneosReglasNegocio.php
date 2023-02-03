@@ -43,10 +43,4 @@
             $res = $gestionDAL->obtenerUltimoIdTorneo();
             return $res;          
         }
-
-        // function seleccionarJugadorPorId($idJugador){
-        //     $gestionDAL = new GestionTorneosAccesoDatos();
-        //     $res = $gestionDAL->seleccionarJugadorPorId($idJugador);
-        //     return $res;          
-        // }
     }

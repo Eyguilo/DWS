@@ -12,14 +12,14 @@
             return $mensajeError;
         } else{
             test_verificar_usuario_encontrado($passwd);
-            return $u->insertar('Xavi', 'Jugador', $passwd);
+            return $u->insertar('Ada', 'Administrador', $passwd);
         }
     }
 
     function test_verificar_usuario_encontrado() {
-        $perfil_esperado = 'Jugador';
+        $perfil_esperado = 'Administrador';
         $u = new UsuarioAccesoDatos();
-        $perfil = $u->verificar('Xavi','12345678');
+        $perfil = $u->verificar('Ada','12345678');
         return $perfil === $perfil_esperado;
     }
     var_dump(test_alta_usuario());

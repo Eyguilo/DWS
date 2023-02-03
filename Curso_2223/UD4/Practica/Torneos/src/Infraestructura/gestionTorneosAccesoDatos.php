@@ -45,7 +45,7 @@
             }
             
             mysqli_select_db($conexion, 'torneos_tenis_mesa');
-            $consulta = mysqli_prepare($conexion, "SELECT id_jugador FROM T_Jugador;");  
+            $consulta = mysqli_prepare($conexion, "SELECT id_jugador, nombre FROM T_Jugador;");  
             $consulta->execute();
             $res = $consulta->get_result();
             
@@ -63,7 +63,8 @@
             }
             
             mysqli_select_db($conexion, 'torneos_tenis_mesa');
-            $consulta = mysqli_prepare($conexion, "SELECT fase, id_jugador_a, id_jugador_b, ganador FROM T_Partido WHERE id_torneo = (?);");  
+            $consulta = mysqli_prepare($conexion, "SELECT fase, (SELECT nombre FROM T_Jugador WHERE T_Jugador.id_jugador=id_jugador_a) as nombre_jugador_a, (SELECT nombre FROM T_Jugador WHERE T_Jugador.id_jugador=id_jugador_b) as nombre_jugador_b, (SELECT nombre FROM T_Jugador WHERE T_Jugador.id_jugador=ganador) as nombre_jugador_ganador
+            FROM T_Partido INNER JOIN T_Jugador ON T_Jugador.id_jugador = T_Partido.id_jugador_b WHERE id_torneo = (?) ORDER BY id_partido;");  
             $consulta->bind_param("i", $idTorneo);
             $consulta->execute();
             $res = $consulta->get_result();
@@ -73,20 +74,6 @@
                 array_push($partido, $myrow);
             }
             return $partido;
-        }
-
-        function seleccionarJugadorPorId($idJugador){
-            $conexion = mysqli_connect('localhost','root','1234');
-            if (mysqli_connect_errno()) {
-                echo "Error al conectar a MySQL: ". mysqli_connect_error();
-            }
-            
-            mysqli_select_db($conexion, 'torneos_tenis_mesa');
-            $consulta = mysqli_prepare($conexion, "SELECT nombre FROM T_Jugador WHERE id_jugador = (?);");  
-            $consulta->bind_param("i", $idJugador);
-            $consulta->execute();
-            $res = $consulta->get_result();
-            return $res;
         }
 
         function obtenerUltimoIdTorneo(){

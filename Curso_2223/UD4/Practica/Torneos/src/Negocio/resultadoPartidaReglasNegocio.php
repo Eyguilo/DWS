@@ -9,9 +9,9 @@
         function __construct() {
         }
 
-        function insertarPartida($idTorneo, $idJugadorA, $idJugadorB, $fase, $idGanador){
+        function insertarPartida($idTorneo, $idJugadorA, $idJugadorB, $fase){
             $foo = new ResultadoPartidaAccesoDatos();
-            $u = $foo->insertarPartida($idTorneo, $idJugadorA, $idJugadorB, $fase, $idGanador);
+            $u = $foo->insertarPartida($idTorneo, $idJugadorA, $idJugadorB, $fase);
             return $u;
         }
     }

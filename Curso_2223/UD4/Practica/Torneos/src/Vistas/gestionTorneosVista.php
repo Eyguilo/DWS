@@ -10,8 +10,8 @@
         $gestionBL = new GestionTorneosReglasNegocio();
         $datosTorneo =  $gestionBL->insertarTorneo($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
         $idUltimo = $gestionBL->obtenerUltimoIdTorneo();
-
         $insertarPartidosCuartos = $gestionBL->insertarPartidosCuartos($idUltimo[0][0]);
+        var_dump($idUltimo);
         header('Location: torneosVistaAdmin.php');
     }
 ?>
@@ -40,12 +40,13 @@
                     <div id='inicio'>
                         <div class='titulo'>Creación de torneo</div>
                         <form method = 'POST' action = '".htmlspecialchars($_SERVER['PHP_SELF'])."'>
-                            <input id='nombre' name = 'nombre' type = 'text' placeholder='Nombre'>
-                            <input id = 'fecha' name = 'fecha' type = 'date'>
-                            <select name='estado' id='estado'>
-                                <option selected='true' disabled='disabled'>Seleccione el estado del torneo</option>
-                                <option value='Finalizado'>Finalizado</option>
+                            <input id='nombre' name = 'nombre' type = 'text' placeholder='Nombre' required='required'>
+                            <label for='fecha'>Seleccione una fecha:</label>
+                            <input id = 'fecha' name = 'fecha' type = 'date' required='required'>
+                            <label for='estado'>Estado del torneo:</label>
+                            <select name='estado' id='estado'required='required'>
                                 <option value='En curso'>En curso</option>
+                                <option value='Finalizado'>Finalizado</option>
                             </select>
                             <input type='text' name='ganador' id='ganador' placeholder='Nombre del ganador'>
                             <input class='boton' type = 'submit'>
@@ -68,9 +69,12 @@
                         <div class='cerrar'><a href='logOutVista.php'>Cerrar sesión</a></div>                        
                         <div class='bienvenido'><p>Bienvenido: ".$_SESSION['usuario']."</p></div>
                         <div class='volver'><a href='torneosVistaAdmin.php'>Volver</a></div>
-                        <div class='registro'><p>Número de registros: ".count($datosPartidos)."</p></div>
-                        <div class='crear'><a href='resultadoPartidaVista.php?idTorneo=".$idTorneo."'>Nueva partida</a></div>
-                        </div>
+                        <div class='registro'><p>Número de registros: ".count($datosPartidos)."</p></div>";
+                        if(count($datosPartidos) < 7){
+                         echo "<div class='crear'><a href='resultadoPartidaVista.php?idTorneo=".$idTorneo."'>Nueva partida</a></div>";
+                        }
+        echo "
+                    </div>
                     <div id='caja2'>
                         <table class='default'>
                             <caption>Torneos de Tenis de Mesa</caption>
