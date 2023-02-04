@@ -25,6 +25,7 @@
             if (mysqli_connect_errno()) {
                 echo "Error al conectar a MySQL: ". mysqli_connect_error();
             }
+            
             mysqli_select_db($conexion, 'torneos_tenis_mesa');
             $consulta = mysqli_prepare($conexion, "SELECT usuario, clave, perfil FROM T_Usuario WHERE usuario = ?;");
             $sanitized_usuario = mysqli_real_escape_string($conexion, $usuario);       

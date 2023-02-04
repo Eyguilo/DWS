@@ -39,7 +39,7 @@
                 </form> 
                 <?php
                     if(isset($error)) {
-                        print("<div class='pie'>No tienes acceso.</div>");
+                        echo $perfil;
                     }
                 ?>               
             </div>

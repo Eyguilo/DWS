@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: loginVista.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,26 +15,20 @@
 </head>
 <body>
     <?php
-        session_start();
-        if (!isset($_SESSION['usuario'])) {
-            header("Location: loginVista.php");
-        }
-    ?>
-
-    <?php
-        require("../Negocio/torneosReglasNegocio.php");
         ini_set('display_errors', 'On');
         ini_set('html_errors', 1);
 
+        require_once("../Negocio/torneosReglasNegocio.php");
+
         $torneosBL = new TorneosReglasNegocio();
-        $datosTorneos = $torneosBL->obtener();        
-            
+        $datosTorneos = $torneosBL->obtenerTorneos();
+                    
         echo "
             <div id='contenedor'>
                 <div id='central'>
                     <div id='caja1'>
-                        <div class='cerrar'><a href='logOutVista.php'> Cerrar sesión </a></div>
-                        <div class='bienvenido'><p>Bienvenido: ".$_SESSION['usuario']."</p></div>
+                        <div class='cerrar'><a href='logOutVista.php'> Cerrar sesión </a></div>                        
+                        <div class='bienvenido'><p>Bienvenido: ".$_SESSION['usuario']."</p></div>                                          
                         <div class='registro'><p>Número de registros: ".count($datosTorneos)."</p></div>
                     </div>
                     <div id='caja2'>
@@ -49,7 +49,7 @@
             echo "
                                 <tr>
                                     <td class='letras'>".$torneos->getID()."</td>
-                                    <td class='letras'>".$torneos->getNOMBRE()."</td>
+                                    <td class='letras'><a href='torneoVista.php?idTorneo=".$torneos->getID()."' class='enlaceTorneo'>".$torneos->getNOMBRE()."</a></td>
                                     <td class='letras'>".$torneos->getNUMJUGADORES()."</td>
                                     <td class='letras'>".$torneos->getFECHA()."</td>
                                     <td class='letras'>".$torneos->getESTADO()."</td>

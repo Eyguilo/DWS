@@ -46,4 +46,15 @@
             $u = $torneoDAL->nombreTorneo($idTorneo);
             return $u;
         }
+
+        function obtenerGanador($idTorneo){
+            $torneoDAL = new TorneoAccesoDatos();
+            $u = $torneoDAL->obtenerGanador($idTorneo);
+            return $u;
+        }
+        function insertarCampeonTorneo($idTorneo, $nombreJugador){
+            $fichaDAL = new TorneoAccesoDatos();
+            $u = $fichaDAL->insertarCampeonTorneo($idTorneo, $nombreJugador);
+            return $u;
+        }
     }

@@ -45,10 +45,7 @@
                             <input value='En curso' id = 'estado' name = 'estado' type = 'hidden' required='required'>
                             <input class='boton' type = 'submit'>
                         </form>
-                        <a class='volver' href='torneosVistaAdmin.php'>Volver</a>";                    
-                            if(isset($error)) {
-                                print('<div class="pie">Completa los datos correctamente.</div>');
-                            }                                  
+                        <a class='volver' href='torneosVistaAdmin.php'>Volver</a>";                                                   
         echo "      </div>
                 </div>
             </div>";
