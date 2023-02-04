@@ -23,18 +23,27 @@
             return $this->_NOMBRE;
         }
 
-        function obtener() {
-            $torneosDAL = new TorneoAccesoDatos();
-            $results = $torneosDAL->obtener();
+        function obtenerCuartos($idTorneo){
+            $torneoDAL = new TorneoAccesoDatos();
+            $u = $torneoDAL->obtenerCuartos($idTorneo);
+            return $u;
+        }
 
-            $listaTorneos =  array();
+        function obtenerSemifinales($idTorneo){
+            $torneoDAL = new TorneoAccesoDatos();
+            $u = $torneoDAL->obtenerSemifinales($idTorneo);
+            return $u;
+        }
 
-            foreach ($results as $torneo) {
-                $oTorneosReglasNegocio = new TorneoReglasNegocio();
-                $oTorneosReglasNegocio->init($torneo['id_jugador'], $torneo['nombre']);
-                array_push($listaTorneos,$oTorneosReglasNegocio);            
-            }
-            
-            return $listaTorneos;
+        function obtenerFinal($idTorneo){
+            $torneoDAL = new TorneoAccesoDatos();
+            $u = $torneoDAL->obtenerFinal($idTorneo);
+            return $u;
+        }
+
+        function nombreTorneo($idTorneo){
+            $torneoDAL = new TorneoAccesoDatos();
+            $u = $torneoDAL->nombreTorneo($idTorneo);
+            return $u;
         }
     }

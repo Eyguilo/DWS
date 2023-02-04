@@ -1,16 +1,7 @@
 <?php
-    require_once('../Negocio/torneosReglasNegocio.php');
-    require_once('../Negocio/gestionTorneosReglasNegocio.php');
-
     session_start();
     if (!isset($_SESSION['usuario'])) {
         header("Location: loginVista.php");
-    }
-    
-    if($_SERVER['REQUEST_METHOD']=='POST') {
-        $gestionBL = new GestionTorneosReglasNegocio();
-        //$datosTorneo =  $gestionBL->insertarTorneo($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
-        //$insertarPartidosCuartos = $gestionBL->jugadores();
     }
 ?>
 <!DOCTYPE html>
@@ -61,13 +52,13 @@
             echo "
                                 <tr>
                                     <td class='letras'>".$torneos->getID()."</td>
-                                    <td class='letras'>".$torneos->getNOMBRE()."</td>
+                                    <td class='letras'><a href='torneoVista.php?idTorneo=".$torneos->getID()."' class='enlaceTorneo'>".$torneos->getNOMBRE()."</a></td>
                                     <td class='letras'>".$torneos->getNUMJUGADORES()."</td>
                                     <td class='letras'>".$torneos->getFECHA()."</td>
                                     <td class='letras'>".$torneos->getESTADO()."</td>
                                     <td class='letras'>".$torneos->getCAMPEON()."</td>
-                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar&idTorneo=".$torneos->getID()."'>Editar</a></td>
-                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php?idTorneo=".$torneos->getID()."'>Borrar</a></td>
+                                    <td><a id='editar' href='gestionTorneosVista.php?modo=editar&idTorneo=".$torneos->getID()."'>Editar</a></td>
+                                    <td><a id='editar' href='mensajeBorrarTorneoVista.php?idTorneo=".$torneos->getID()."'>Borrar</a></td>
                                 </tr>";
         }
         echo "              </tbody>

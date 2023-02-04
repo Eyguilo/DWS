@@ -28,7 +28,7 @@ body {
 }
 
 .titulo {
-    font-size: 220%;
+    font-size: 180%;
     color:#bbe1fa;
     text-align: center;
     margin-bottom: 20px;
@@ -65,7 +65,7 @@ body {
 #inicio input::placeholder {
     color: #264a58;
 }
-#jugador{
+#jugadorA, #jugadorB, #jugadorGanador, #fase {
     font-size: 110%;
     color: #1b262c;    
     display: block;
@@ -121,4 +121,10 @@ body {
 #inicio .volver:hover {
     background-color: #004370;
     color:#bbe1fa;
+}
+label{
+    font-size: 150%;
+}
+select{
+
 }

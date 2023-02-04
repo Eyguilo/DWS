@@ -2,58 +2,70 @@
     margin: 0%;
     padding: 0%;
 }
+
 .contenedor {
     width: 100%;
     height: 100%;
     position: absolute;
     background-color: #0f4c75;
 }
+
+#central {
+    max-width: 1800px;
+    width: 100%;
+    background-color: #3282b8;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+    padding-top: 15px;
+}
+
 .caja1 {
     width: 100%;
     height: 10%;
 }
+
 .caja2 {
     width: 100%;
     height: 90%;
     overflow: auto;
 }
-.col1{
-    height: 100%;
-    width: 2%;
-    float: left;
-}
 .col2 {
     height: 100%;
     width: 15%;
     float: left;
-}
-h1{
-    text-align: center;
-    padding-top: 1%;
-    font-size: 300%;
-    color:#bbe1fa;
-    -webkit-text-stroke: 0.5px black;
+    margin-left: 130px;
 }
 
-h2 {
+h1 {
     text-align: center;
-    margin-top: 5%;
-    color:#bbe1fa;
-    -webkit-text-stroke: 0.5px black;
+    font-size: 250%;
+    color: #002d46;
+    margin-bottom: 20px;
+
 }
-.espacio {
+h2{
+    text-align: center;
+    border-radius: 15px;
+    font-size: 150%;
+    color: #002d46;    
+    height: 30px;   
+    margin-bottom: 10px;
+}
+.parejasC {
     margin-top: 50px;
 }
-/*.parejas_sf {
-    margin-top: 10%;
-}*/
 .parejasF {
     margin-top: 15%;
 }
 .jugadorC {
     width: 100%;
-    padding: 3% 0.5%;
-    border: 5px solid black;
+    padding: 5px 0px;
     text-align: center;
     background-color: antiquewhite;
     font-size: x-large;
@@ -61,48 +73,64 @@ h2 {
     margin-right: auto;
     margin-bottom: 2px;
     overflow: auto;
+    border-radius: 30px;
 }
+
 .jugadorSF {
     width: 100%;
-    padding: 3% 0.5%;
-    border: 5px solid black;
+    padding: 5px 0px;
     text-align: center;
     background-color: antiquewhite;
     font-size: x-large;
     margin: auto;
-    margin-top: 33%;
+    margin-top: 30%;
     overflow: auto;
+    border-radius: 30px;
 }
+
 .jugadorF {
     width: 100%;
-    padding: 3% 0.5%;
-    border: 5px solid black;
+    padding: 5px 0px;
     text-align: center;
     background-color: antiquewhite;
     font-size: x-large;
     margin: auto;
-    margin-top: 68%;
+    margin-top: 160px;
     overflow: auto;
+    border-radius: 30px;
 }
+
 .jugadorG {
     width: 100%;
-    padding: 3% 0.5%;
-    border: 5px solid black;
+    padding: 5px 0px;
     text-align: center;
     background-color: antiquewhite;
     font-size: x-large;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 110%;
+    margin-top: 260px;
     overflow: auto;
+    border-radius: 30px;
 }
-.imagen{
-    border: 5px solid black;
+#enlace{
+    width: 100%;
+    text-align: right;
+    margin-bottom: 20px;
+}
+a{
+    text-decoration: none;
+    font-size: 120%;
+    color:#1b262c;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: none;    
+    border-radius: 3px;   
     background-color: antiquewhite;
-    width: 25%;
-    height: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4%;
-    float: left;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+a:hover{
+    background-color: #004370;
+    color:#bbe1fa;    
 }

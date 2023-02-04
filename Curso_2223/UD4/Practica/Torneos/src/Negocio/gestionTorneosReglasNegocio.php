@@ -9,9 +9,9 @@
         function __construct() {
         }
 
-        function insertarTorneo($nombre, $fecha, $estado, $ganador) {
+        function insertarTorneo($nombre, $fecha, $estado) {
             $gestionDAL = new GestionTorneosAccesoDatos();
-            $res = $gestionDAL->insertarTorneo($nombre,$fecha, $estado, $ganador);           
+            $res = $gestionDAL->insertarTorneo($nombre,$fecha, $estado);           
             return $res;            
         }
 
@@ -37,10 +37,21 @@
             return $res;          
         }
 
-
         function obtenerUltimoIdTorneo(){
             $gestionDAL = new GestionTorneosAccesoDatos();
             $res = $gestionDAL->obtenerUltimoIdTorneo();
             return $res;          
+        }
+
+        function obtenerNombreTorneo($idTorneo){
+            $gestionDAL = new GestionTorneosAccesoDatos();
+            $u = $gestionDAL->obtenerNombreTorneo($idTorneo);
+            return $u;
+        }
+
+        function borrarPartida($idPartido){
+            $gestionDAL = new GestionTorneosAccesoDatos();
+            $u = $gestionDAL->borrarPartida($idPartido);
+            return $u;
         }
     }

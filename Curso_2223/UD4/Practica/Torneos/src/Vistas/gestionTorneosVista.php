@@ -8,10 +8,9 @@
     
     if($_SERVER['REQUEST_METHOD']=='POST') {
         $gestionBL = new GestionTorneosReglasNegocio();
-        $datosTorneo =  $gestionBL->insertarTorneo($_POST['nombre'],$_POST['fecha'],$_POST['estado'],$_POST['ganador']);
+        $datosTorneo =  $gestionBL->insertarTorneo($_POST['nombre'],$_POST['fecha'],$_POST['estado']);
         $idUltimo = $gestionBL->obtenerUltimoIdTorneo();
         $insertarPartidosCuartos = $gestionBL->insertarPartidosCuartos($idUltimo[0][0]);
-        var_dump($idUltimo);
         header('Location: torneosVistaAdmin.php');
     }
 ?>
@@ -43,12 +42,7 @@
                             <input id='nombre' name = 'nombre' type = 'text' placeholder='Nombre' required='required'>
                             <label for='fecha'>Seleccione una fecha:</label>
                             <input id = 'fecha' name = 'fecha' type = 'date' required='required'>
-                            <label for='estado'>Estado del torneo:</label>
-                            <select name='estado' id='estado'required='required'>
-                                <option value='En curso'>En curso</option>
-                                <option value='Finalizado'>Finalizado</option>
-                            </select>
-                            <input type='text' name='ganador' id='ganador' placeholder='Nombre del ganador'>
+                            <input value='En curso' id = 'estado' name = 'estado' type = 'hidden' required='required'>
                             <input class='boton' type = 'submit'>
                         </form>
                         <a class='volver' href='torneosVistaAdmin.php'>Volver</a>";                    
@@ -62,6 +56,8 @@
         $idTorneo = $_GET['idTorneo'];
         $gestionBL1 = new GestionTorneosReglasNegocio();
         $datosPartidos =  $gestionBL1->seleccionarPartidos($idTorneo);
+        $gestionBL2 = new GestionTorneosReglasNegocio();
+        $o = $gestionBL2->obtenerNombreTorneo($idTorneo);
         echo "
             <div id='contenedor'>
                 <div id='central'>
@@ -77,10 +73,11 @@
                     </div>
                     <div id='caja2'>
                         <table class='default'>
-                            <caption>Torneos de Tenis de Mesa</caption>
+                            <caption>".$o[0][0]." Torneo de Tenis de Mesa</caption>
                             <thead>
                                 <tr>
                                     <th>ID del Torneo</th>
+                                    <th>ID del Partido</th>
                                     <th>Jugador A</th>
                                     <th>Jugador B</th>
                                     <th>Ronda</th>
@@ -94,12 +91,13 @@
             echo "
                                 <tr>
                                     <td class='letras'>".$idTorneo."</td>
-                                    <td class='letras'>".$partidos[1]."</td>
-                                    <td class='letras'>".$partidos[2]."</td>
                                     <td class='letras'>".$partidos[0]."</td>
+                                    <td class='letras'>".$partidos[2]."</td>
                                     <td class='letras'>".$partidos[3]."</td>
-                                    <td><a class='editar' href='gestionTorneosVista.php?modo=editar'>Editar</a></td>
-                                    <td><a class='editar' href='mensajeBorrarTorneoVista.php'>Borrar</a></td>
+                                    <td class='letras'>".$partidos[1]."</td>
+                                    <td class='letras'>".$partidos[4]."</td>
+                                    <td><a class='editar' href='editarPartidaVista.php?idTorneo=".$idTorneo."&idPartida=".$partidos[0]."'>Editar</a></td>
+                                    <td><a class='editar' href='mensajeBorrarPartidaVista.php?idTorneo=".$idTorneo."&idPartida=".$partidos[0]."'>Borrar</a></td>
                                 </tr>";
         }
         echo "              </tbody>

@@ -2,6 +2,11 @@
 <?php
     require("../Infraestructura/usuarioAccesoDatos.php");
 
+    session_start();
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: loginVista.php");
+    }
+
     function test_alta_usuario() {
         $u = new UsuarioAccesoDatos();
 
