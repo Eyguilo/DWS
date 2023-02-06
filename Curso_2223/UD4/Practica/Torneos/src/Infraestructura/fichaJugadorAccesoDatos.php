@@ -12,8 +12,9 @@
                 echo "Error al conectar a MySQL: ". mysqli_connect_error();
             }
             mysqli_select_db($conexion, 'torneos_tenis_mesa');
-            $consulta = mysqli_prepare($conexion, "SELECT nombre, count(id_jugador) FROM T_Partido inner JOIN T_Jugador ON T_Partido.id_jugador_a = T_Jugador.id_jugador where id_jugador_a = (?) || id_jugador_b = (?);");
-            $consulta->bind_param("ii", $idJugador, $idJugador);
+            $consulta = mysqli_prepare($conexion, "SELECT (SELECT nombre FROM T_Jugador WHERE T_Jugador.id_jugador=(?)), count((SELECT id_jugador FROM T_Jugador WHERE T_Jugador.id_jugador=(?))) FROM T_Partido inner JOIN T_Jugador 
+            ON T_Partido.id_jugador_a = T_Jugador.id_jugador where id_jugador_a = (?) || id_jugador_b = (?);");
+            $consulta->bind_param("iiii",$idJugador, $idJugador, $idJugador, $idJugador);
             $consulta->execute();
             $result = $consulta->get_result();
 
