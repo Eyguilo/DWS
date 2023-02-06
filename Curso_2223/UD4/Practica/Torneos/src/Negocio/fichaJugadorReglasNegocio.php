@@ -26,5 +26,11 @@
             $u = $fichaDAL->totalTorneos();
             return $u;
         }
+
+        function totalTorneosGanados($idJugador){
+            $fichaDAL = new FichaJugadorAccesoDatos();
+            $u = $fichaDAL->totalTorneosGanados($idJugador);
+            return $u;
+        }
     }
     

@@ -33,24 +33,24 @@
                         <div class='titulo'>Resultado de partida</div>
                         <form method = 'POST' action = '".htmlspecialchars($_SERVER['PHP_SELF'])."'>
                             <select name='idJugadorA' id='jugadorA' required>
-                                <option value='1'>Charles Negro</option>
-                                <option value='2'>Ylijendri Canas</option>
-                                <option value='3'>Lerdian Ganu</option>
-                                <option value='4'>Lucio Okolo</option>
-                                <option value='5'> Jorge Agüila</option>
-                                <option value='6'>Ghizermo Quesiii</option>
-                                <option value='7'>Marai Motos</option>
-                                <option value='8'>Fernidio Mecagoendia</option>
+                                <option value='1'>Jugador 1</option>
+                                <option value='2'>Jugador 2</option>
+                                <option value='3'>Jugador 3</option>
+                                <option value='4'>Jugador 4</option>
+                                <option value='5'>Jugador 5</option>
+                                <option value='6'>Jugador 6</option>
+                                <option value='7'>Jugador 7</option>
+                                <option value='8'>Jugador 8</option>
                             </select>
                             <select name='idJugadorB' id='jugadorB' required>
-                                <option value='1'>Charles Negro</option>
-                                <option value='2'>Ylijendri Canas</option>
-                                <option value='3'>Lerdian Ganu</option>
-                                <option value='4'>Lucio Okolo</option>
-                                <option value='5'> Jorge Agüila</option>
-                                <option value='6'>Ghizermo Quesiii</option>
-                                <option value='7'>Marai Motos</option>
-                                <option value='8'>Fernidio Mecagoendia</option>
+                                <option value='1'>Jugador 1</option>
+                                <option value='2'>Jugador 2</option>
+                                <option value='3'>Jugador 3</option>
+                                <option value='4'>Jugador 4</option>
+                                <option value='5'>Jugador 5</option>
+                                <option value='6'>Jugador 6</option>
+                                <option value='7'>Jugador 7</option>
+                                <option value='8'>Jugador 8</option>
                             </select>
                             <select name='fase' id='fase' required>
                                 <option value='Cuartos'>Cuartos</option>

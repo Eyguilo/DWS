@@ -4,11 +4,11 @@
 
     function test_alta_usuario() {
         $u = new UsuarioAccesoDatos();
-        return $u->insertar('Marc', 'Jugador', "12345678");        
+        return $u->insertar('Marc', 'Administrador', "12345678");        
     }
 
     function test_verificar_usuario_encontrado() {
-        $perfil_esperado = 'Jugador';
+        $perfil_esperado = 'Administrador';
         $u = new UsuarioAccesoDatos();
         $perfil = $u->verificar('Marc','12345678');
         return $perfil === $perfil_esperado;

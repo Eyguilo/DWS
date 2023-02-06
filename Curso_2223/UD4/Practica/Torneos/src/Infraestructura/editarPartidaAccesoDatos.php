@@ -19,4 +19,5 @@
             $result = $consulta->get_result();
             return $result;
         }
+
     }

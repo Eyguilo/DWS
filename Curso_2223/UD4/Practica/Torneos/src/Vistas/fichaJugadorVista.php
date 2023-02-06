@@ -29,6 +29,9 @@
         $fichaBL3 = new FichaJugadorReglasNegocio();
         $totalTorneos = $fichaBL3->totalTorneos();
 
+        $fichaBL4 = new FichaJugadorReglasNegocio();
+        $totalTorneosGanados = $fichaBL4->totalTorneosGanados($idJugador);
+
         echo "
             <div id='contenedor'>
                 <div id='central'>
@@ -39,7 +42,7 @@
                         <p id='datos'>Partidos ganados: ".$totalPartidosGanados[0][0]."</p>
                         <p id='datos'>Porcentaje de victorias: ".round($porcentajeVictorias, 2)."%</p>
                         <p id='datos'>Total torneos jugados: ".$totalTorneos[0][0]."</p>
-                        <p id='datos'>Torneos ganados: </p>
+                        <p id='datos'>Torneos ganados: ".$totalTorneosGanados[0][0]."</p>
                         <a class='volver' href='torneoVista.php?idTorneo=".$idTorneo."'>Volver</a>                                
                     </div>
                 </div>

@@ -59,4 +59,22 @@
             }
             return $torneo;
         }
-    }
+
+        function totalTorneosGanados() {
+            $conexion = mysqli_connect('localhost','root','1234');
+            if (mysqli_connect_errno()) {
+                echo "Error al conectar a MySQL: ". mysqli_connect_error();
+            }
+            mysqli_select_db($conexion, 'torneos_tenis_mesa');
+            $consulta = mysqli_prepare($conexion, "SELECT  count(id_ganador) FROM T_Partido WHERE fase = 'Final' && id_ganador = (?);");
+            $consulta->bind_param("i", $idJugador);
+            $consulta->execute();
+            $result = $consulta->get_result();
+
+            $torneo =  array();
+            while ($myrow = $result->fetch_row()) {
+                array_push($torneo, $myrow);
+            }
+            return $torneo;
+        }
+    };
