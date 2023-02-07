@@ -73,7 +73,7 @@
                         </div>
                     </div>";
         }
-        if($torneoNombresF != null){
+        if($torneoNombresF != null && $torneoNombresSF != null){
             echo"   <div class='col2'>
                         <h2>FINAL</h2>
                         <div class='parejasF'>
@@ -82,7 +82,7 @@
                         </div>
                     </div>";
         }
-        if($torneoNombresG != null){
+        if($torneoNombresG != null && $torneoNombresF != null && $torneoNombresSF != null){
             echo"   <div class='col2'>
                         <h2>CAMPEÓN</h2>
                         <div class='jugadorG'><a href='fichaJugadorVista.php?idTorneo=".$idTorneo."&idJugador=".$torneoNombresG[0][0]."'>".$torneoNombresG[0][1]."</a></div>
