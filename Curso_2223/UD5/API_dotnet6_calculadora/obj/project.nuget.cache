@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "zBruGs4GjvTwL4rFLeNyrt0LbTTean4mL04CNdr1T3xrobgPg3zCD764aMJHbaTxN6vdFNHK72pTDOqhRbj8ZA==",
+  "success": true,
+  "projectFilePath": "/var/www/html/DWS/Curso_2223/UD5/API_dotnet6_calculadora/EjemploAPI.csproj",
+  "expectedPackageFiles": [
+    "/home/horabaixa/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/home/horabaixa/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/horabaixa/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "/home/horabaixa/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/home/horabaixa/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/home/horabaixa/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
